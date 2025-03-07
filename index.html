@@ -1,60 +1,207 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <!-- Page setup -->
     <meta charset="utf-8">
-    <title>WIP</title>
-    <meta name="description" content="Zac Carrico's GitHub website">
+    <title>Zac Carrico | Personal Site</title>
+    <meta name="description" content="Zac Carrico's personal website with a Blade Runner inspired theme">
     <meta name="author" content="Zac Carrico">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
   
     <!-- Stylesheets -->
     <!-- Reset default styles and add support for google fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet" type="text/css" />
-    <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
    
     <!-- Custom styles -->
     <link href="style.css" rel="stylesheet" type="text/css" />
 
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>    
-
-    <!-- Want to add Bootstrap? -->
-    <!-- Visit: https://getbootstrap.com/docs/4.3/getting-started/introduction/ -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>    
     
   </head>
   
   <body>
-
+    <!-- Parallax backgrounds -->
+    <div class="parallax" data-speed="10" id="bg-stars"></div>
+    <div class="parallax" data-speed="20" id="bg-grid"></div>
+    
     <header id="header">
-      <h1>WIP</h1>
-      
-      <!-- Menu link fragment #id should match a div id. Example: <a href="#home"> links to <div id="home"></div>  -->
-      <ul class="main-menu">
-      <!--
-        <li><a href="#home">home</a></li>
-        <li><a href="#about">about</a></li>
-        <li><a href="#contact">contact</a></li> -->
-      </ul>                 
+      <div class="inner">
+        <h1 class="glitch-text" data-text="ZAC CARRICO">ZAC CARRICO</h1>
+        
+        <!-- Menu link fragment #id should match a div id. Example: <a href="#home"> links to <div id="home"></div>  -->
+        <ul class="main-menu">
+          <li><a href="#home">HOME</a></li>
+          <li><a href="#about">ABOUT</a></li>
+          <li><a href="#projects">PROJECTS</a></li>
+          <li><a href="#contact">CONTACT</a></li>
+        </ul>
+      </div>                 
     </header>
    
     <div id="container">
       <div class="inner">
         <div id="content"> 
-        <!-- 
-          <div id="home" class="content-region hide">
-            <h2>Home</h2>
-            <p>
-              This is a WIP.
-            </p>
+          <div id="home" class="content-region">
+            <div class="neon-box">
+              <h2>WELCOME</h2>
+              <p class="intro-text">
+                This personal website features a cyberpunk aesthetic inspired by Blade Runner 2049.
+                Navigate through the sections to learn more about me and my work.
+              </p>
+              <div class="cta-buttons">
+                <a href="#projects" class="btn primary">VIEW PROJECTS</a>
+                <a href="#contact" class="btn secondary">GET IN TOUCH</a>
+              </div>
+            </div>
+            
+            <div class="data-box">
+              <div class="data-header">
+                <span class="data-title">SYSTEM.INFO</span>
+                <span class="data-indicator">ACTIVE</span>
+              </div>
+              <div class="data-content">
+                <div class="data-line"><span class="data-label">STATUS</span> <span class="data-value">ONLINE</span></div>
+                <div class="data-line"><span class="data-label">MEMORY</span> <span class="data-value">STABLE</span></div>
+                <div class="data-line"><span class="data-label">ACCESS</span> <span class="data-value blink">AUTHORIZED</span></div>
+              </div>
+            </div>
           </div>
-        -->
           
+          <div id="about" class="content-region hide">
+            <h2>ABOUT ME</h2>
+            <div class="about-grid">
+              <div class="about-text">
+                <p>
+                  I am a developer and technology enthusiast with a passion for creating meaningful digital experiences.
+                  My work focuses on the intersection of technology and design, bringing both functionality and aesthetics together.
+                </p>
+                <p>
+                  With experience in various programming languages and frameworks, I build applications that not only work well
+                  but also engage users through thoughtful interface design and interactions.
+                </p>
+                <p>
+                  When I'm not coding, you can find me exploring new technologies, reading sci-fi literature, or contemplating
+                  the future of human-computer interaction.
+                </p>
+              </div>
+              <div class="about-stats">
+                <div class="stat-item">
+                  <span class="stat-label">CODING</span>
+                  <div class="stat-bar"><div class="stat-fill" style="width:90%"></div></div>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">DESIGN</span>
+                  <div class="stat-bar"><div class="stat-fill" style="width:75%"></div></div>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">PROBLEM SOLVING</span>
+                  <div class="stat-bar"><div class="stat-fill" style="width:85%"></div></div>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">COMMUNICATION</span>
+                  <div class="stat-bar"><div class="stat-fill" style="width:80%"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div id="projects" class="content-region hide">
+            <h2>PROJECTS</h2>
+            <div class="projects-grid">
+              <div class="project-card">
+                <div class="project-image" style="background-image: url('https://via.placeholder.com/400x250/0a0a0f/00c2ba?text=Project+1')"></div>
+                <div class="project-info">
+                  <h3>PROJECT ALPHA</h3>
+                  <p>A cutting-edge application demonstrating advanced UI concepts with a focus on user experience.</p>
+                  <div class="project-tech">
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>JavaScript</span>
+                  </div>
+                  <a href="#" class="btn small">View Details</a>
+                </div>
+              </div>
+              
+              <div class="project-card">
+                <div class="project-image" style="background-image: url('https://via.placeholder.com/400x250/0a0a0f/ff9e4f?text=Project+2')"></div>
+                <div class="project-info">
+                  <h3>PROJECT NEXUS</h3>
+                  <p>An innovative platform connecting users with digital services through an intuitive interface.</p>
+                  <div class="project-tech">
+                    <span>React</span>
+                    <span>Node.js</span>
+                    <span>MongoDB</span>
+                  </div>
+                  <a href="#" class="btn small">View Details</a>
+                </div>
+              </div>
+              
+              <div class="project-card">
+                <div class="project-image" style="background-image: url('https://via.placeholder.com/400x250/0a0a0f/00c2ba?text=Project+3')"></div>
+                <div class="project-info">
+                  <h3>PROJECT CIPHER</h3>
+                  <p>A security-focused application with advanced encryption algorithms and clean interface design.</p>
+                  <div class="project-tech">
+                    <span>Python</span>
+                    <span>Django</span>
+                    <span>PostgreSQL</span>
+                  </div>
+                  <a href="#" class="btn small">View Details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div id="contact" class="content-region hide">
+            <h2>CONTACT</h2>
+            <div class="contact-container">
+              <div class="contact-info">
+                <p>Interested in working together? Feel free to reach out through any of the following channels:</p>
+                <ul class="contact-links">
+                  <li>
+                    <span class="contact-icon">📧</span>
+                    <a href="mailto:example@email.com">example@email.com</a>
+                  </li>
+                  <li>
+                    <span class="contact-icon">🔗</span>
+                    <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
+                  </li>
+                  <li>
+                    <span class="contact-icon">💻</span>
+                    <a href="https://github.com/" target="_blank">GitHub</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="contact-form">
+                <div class="form-group">
+                  <label for="name">NAME</label>
+                  <input type="text" id="name" class="form-control" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                  <label for="email">EMAIL</label>
+                  <input type="email" id="email" class="form-control" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                  <label for="message">MESSAGE</label>
+                  <textarea id="message" class="form-control" rows="5" placeholder="Enter your message"></textarea>
+                </div>
+                <button type="submit" class="btn primary full-width">SEND MESSAGE</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <footer>  
+    <footer>
+      <div class="inner">
+        <div class="footer-content">
+          <p>&copy; 2025 Zac Carrico. All Rights Reserved.</p>
+          <p class="footer-quote">"More human than human" — Tyrell Corporation</p>
+        </div>
+      </div>
     </footer>
     
     <!-- Load additional JS scripts here -->
