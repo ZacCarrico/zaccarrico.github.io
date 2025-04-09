@@ -8,9 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize glitch text effect
   initGlitchText();
   
-  // Initialize scan line effect
-  initScanLines();
-  
   // Initialize cursor effect
   initCustomCursor();
   
@@ -89,56 +86,6 @@ function initGlitchText() {
   });
 }
 
-// Initialize scan line effect
-function initScanLines() {
-  // Create scan line element
-  const scanLine = document.createElement('div');
-  scanLine.classList.add('scan-line');
-  document.body.appendChild(scanLine);
-  
-  // Animate scan line
-  let position = -20;
-  let speed = 0.3; // 10x slower
-  
-  function animateScanLine() {
-    position += speed;
-    
-    // Reset position when it goes below the screen
-    if (position > window.innerHeight + 20) {
-      position = -20;
-      
-      // Randomize speed between 0.2-0.5 (10x slower)
-      speed = 0.2 + Math.random() * 0.3;
-      
-      // Randomize opacity
-      scanLine.style.opacity = 0.1 + Math.random() * 0.4;
-    }
-    
-    scanLine.style.top = position + 'px';
-    requestAnimationFrame(animateScanLine);
-  }
-  
-  // Add scan line styles
-  const style = document.createElement('style');
-  style.textContent = `
-    .scan-line {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--secondary-color), var(--tertiary-color), var(--primary-color), transparent);
-      z-index: 999;
-      opacity: 0.4;
-      pointer-events: none;
-      box-shadow: 0 0 10px var(--glow-secondary);
-    }
-  `;
-  document.head.appendChild(style);
-  
-  // Start animation
-  requestAnimationFrame(animateScanLine);
-}
 
 // Initialize custom cursor
 function initCustomCursor() {
