@@ -1,178 +1,224 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Page setup -->
-    <meta charset="utf-8">
-    <title>Zac Carrico | Personal Site</title>
-    <meta name="description" content="Zac Carrico's personal website with a Blade Runner inspired theme">
-    <meta name="author" content="Zac Carrico">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-  
-    <!-- Stylesheets -->
-    <!-- Reset default styles and add support for google fonts -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
-   
-    <!-- Custom styles -->
-    <link href="style.css" rel="stylesheet" type="text/css" />
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>    
-    
-  </head>
-  
-  <body>
-    <!-- Parallax backgrounds -->
-    <div class="parallax" data-speed="10" id="bg-stars"></div>
-    <div class="parallax" data-speed="20" id="bg-grid"></div>
-    
-    <header id="header">
-      <div class="inner">
-        <h1 class="glitch-text" data-text="ZAC CARRICO">ZAC CARRICO</h1>
-        
-        <!-- Menu link fragment #id should match a div id. Example: <a href="#home"> links to <div id="home"></div>  -->
-        <ul class="main-menu">
-          <li><a href="#home">HOME</a></li>
-          <li><a href="#about">ABOUT</a></li>
-          <li><a href="#projects">PROJECTS</a></li>
-          <li><a href="#contact">CONTACT</a></li>
-        </ul>
-      </div>                 
-    </header>
-   
-    <div id="container">
-      <div class="inner">
-        <div id="content"> 
-          <div id="home" class="content-region">
-            <div class="neon-box">
-              <h2>WELCOME</h2>
-              <p class="intro-text">
-                Navigate through the sections to learn more about me and my work.
+<head>
+  <!-- Page setup -->
+  <meta charset="utf-8">
+  <title>Zac Carrico | Personal Site</title>
+  <meta name="description" content="Zac Carrico's personal website with a Blade Runner inspired theme">
+  <meta name="author" content="Zac Carrico">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+  <!-- Stylesheets -->
+  <!-- Reset default styles and add support for google fonts -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet"
+    type="text/css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- Custom styles -->
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <!-- Parallax backgrounds -->
+  <div class="parallax" data-speed="10" id="bg-stars"></div>
+  <div class="parallax" data-speed="20" id="bg-grid"></div>
+
+  <header id="header">
+    <div class="inner">
+      <h1 class="glitch-text" data-text="ZAC CARRICO">ZAC CARRICO</h1>
+
+      <!-- Menu link fragment #id should match a div id. Example: <a href="#home"> links to <div id="home"></div>  -->
+      <ul class="main-menu">
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#projects">PROJECTS</a></li>
+        <li><a href="#blog">BLOG</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div id="container">
+    <div class="inner">
+      <div id="content">
+        <div id="home" class="content-region">
+          <div class="neon-box">
+            <h2>WELCOME</h2>
+            <p class="intro-text">
+              Navigate through the sections to learn more about me and my work.
+            </p>
+            <div class="cta-buttons">
+              <a href="#projects" class="btn primary">VIEW PROJECTS</a>
+              <a href="#contact" class="btn secondary">GET IN TOUCH</a>
+            </div>
+          </div>
+
+        </div>
+
+        <div id="about" class="content-region hide">
+          <h2>ABOUT ME</h2>
+          <div class="about-grid">
+            <div class="about-text">
+              <p>
+                I am a Senior Machine Learning Engineer at Apella, specializing in machine learning products for
+                improving surgical operations. I have a deep interest in biotech and healthcare applications of machine
+                learning and have worked on cancer and Alzheimer's disease technologies. I've worked on early research,
+                model development, and the deployment and monitoring of ML services for thousands of daily customers.
               </p>
-              <div class="cta-buttons">
-                <a href="#projects" class="btn primary">VIEW PROJECTS</a>
-                <a href="#contact" class="btn secondary">GET IN TOUCH</a>
-              </div>
+              <p>
+                I'm an active member of the Data and ML community, having presented at conferences such as Ray Summit,
+                TWIML AI, Data Day, and MLOps & GenAI World and published eight journal articles.
+              </p>
+              <p>
+                Outside of work, Zac enjoys spending time with his family in Austin and traveling the world to surf.
+              </p>
+              <p>
+                With experience in various programming languages and frameworks, I build applications that not only work
+                well
+                but also engage users through thoughtful interface design and interactions.
+              </p>
+              <p>
+                When I'm not coding, you can find me exploring new technologies, reading sci-fi literature, or
+                contemplating
+                the future of human-computer interaction.
+              </p>
             </div>
-            
-          </div>
-          
-          <div id="about" class="content-region hide">
-            <h2>ABOUT ME</h2>
-            <div class="about-grid">
-              <div class="about-text">
-                <p>
-                  I am a Senior Machine Learning Engineer at Apella, specializing in machine learning products for improving surgical operations. I have a deep interest in biotech and healthcare applications of machine learning and have worked on cancer and Alzheimer's disease technologies. I've worked on early research, model development, and the deployment and monitoring of ML services for thousands of daily customers. 
-                </p>
-                <p>
-                  I'm an active member of the Data and ML community, having presented at conferences such as Ray Summit, TWIML AI, Data Day, and MLOps & GenAI World and published eight journal articles.
-                </p>
-                <p>
-                  Outside of work, Zac enjoys spending time with his family in Austin and traveling the world to surf.
-                </p>
-                <p>
-                  With experience in various programming languages and frameworks, I build applications that not only work well
-                  but also engage users through thoughtful interface design and interactions.
-                </p>
-                <p>
-                  When I'm not coding, you can find me exploring new technologies, reading sci-fi literature, or contemplating
-                  the future of human-computer interaction.
-                </p>
+            <div class="about-stats">
+              <div class="stat-item">
+                <span class="stat-label">CODING</span>
+                <div class="stat-bar">
+                  <div class="stat-fill" style="width:90%"></div>
+                </div>
               </div>
-              <div class="about-stats">
-                <div class="stat-item">
-                  <span class="stat-label">CODING</span>
-                  <div class="stat-bar"><div class="stat-fill" style="width:90%"></div></div>
+              <div class="stat-item">
+                <span class="stat-label">DESIGN</span>
+                <div class="stat-bar">
+                  <div class="stat-fill" style="width:75%"></div>
                 </div>
-                <div class="stat-item">
-                  <span class="stat-label">DESIGN</span>
-                  <div class="stat-bar"><div class="stat-fill" style="width:75%"></div></div>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">PROBLEM SOLVING</span>
+                <div class="stat-bar">
+                  <div class="stat-fill" style="width:85%"></div>
                 </div>
-                <div class="stat-item">
-                  <span class="stat-label">PROBLEM SOLVING</span>
-                  <div class="stat-bar"><div class="stat-fill" style="width:85%"></div></div>
-                </div>
-                <div class="stat-item">
-                  <span class="stat-label">COMMUNICATION</span>
-                  <div class="stat-bar"><div class="stat-fill" style="width:80%"></div></div>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">COMMUNICATION</span>
+                <div class="stat-bar">
+                  <div class="stat-fill" style="width:80%"></div>
                 </div>
               </div>
             </div>
           </div>
-          
-          <div id="projects" class="content-region hide">
-            <h2>PROJECTS</h2>
-            <div class="projects-grid">
-              <div class="project-card">
-                <div class="project-image" style="background-image: url('https://via.placeholder.com/400x250/0a0a0f/00c2ba?text=Project+1')"></div>
-                <div class="project-info">
-                  <h3>PROJECT ALPHA</h3>
-                  <p>A cutting-edge application demonstrating advanced UI concepts with a focus on user experience.</p>
-                  <div class="project-tech">
-                    <span>HTML5</span>
-                    <span>CSS3</span>
-                    <span>JavaScript</span>
-                  </div>
-                  <a href="#" class="btn small">View Details</a>
+        </div>
+
+        <div id="projects" class="content-region hide">
+          <h2>PROJECTS</h2>
+          <div class="projects-grid">
+            <div class="project-card">
+              <div class="project-image"
+                style="background-image: url('https://via.placeholder.com/400x250/0a0a0f/00c2ba?text=Project+1')"></div>
+              <div class="project-info">
+                <h3>PROJECT ALPHA</h3>
+                <p>A cutting-edge application demonstrating advanced UI concepts with a focus on user experience.</p>
+                <div class="project-tech">
+                  <span>HTML5</span>
+                  <span>CSS3</span>
+                  <span>JavaScript</span>
                 </div>
+                <a href="#" class="btn small">View Details</a>
               </div>
-              
-              <div class="project-card">
-                <div class="project-image" style="background-image: url('https://via.placeholder.com/400x250/0a0a0f/ff9e4f?text=Project+2')"></div>
-                <div class="project-info">
-                  <h3>PROJECT NEXUS</h3>
-                  <p>An innovative platform connecting users with digital services through an intuitive interface.</p>
-                  <div class="project-tech">
-                    <span>React</span>
-                    <span>Node.js</span>
-                    <span>MongoDB</span>
-                  </div>
-                  <a href="#" class="btn small">View Details</a>
+            </div>
+
+            <div class="project-card">
+              <div class="project-image"
+                style="background-image: url('https://via.placeholder.com/400x250/0a0a0f/ff9e4f?text=Project+2')"></div>
+              <div class="project-info">
+                <h3>PROJECT NEXUS</h3>
+                <p>An innovative platform connecting users with digital services through an intuitive interface.</p>
+                <div class="project-tech">
+                  <span>React</span>
+                  <span>Node.js</span>
+                  <span>MongoDB</span>
                 </div>
+                <a href="#" class="btn small">View Details</a>
               </div>
-              
-              <div class="project-card">
-                <div class="project-image" style="background-image: url('https://via.placeholder.com/400x250/0a0a0f/00c2ba?text=Project+3')"></div>
-                <div class="project-info">
-                  <h3>PROJECT CIPHER</h3>
-                  <p>A security-focused application with advanced encryption algorithms and clean interface design.</p>
-                  <div class="project-tech">
-                    <span>Python</span>
-                    <span>Django</span>
-                    <span>PostgreSQL</span>
-                  </div>
-                  <a href="#" class="btn small">View Details</a>
+            </div>
+
+            <div class="project-card">
+              <div class="project-image"
+                style="background-image: url('https://via.placeholder.com/400x250/0a0a0f/00c2ba?text=Project+3')"></div>
+              <div class="project-info">
+                <h3>PROJECT CIPHER</h3>
+                <p>A security-focused application with advanced encryption algorithms and clean interface design.</p>
+                <div class="project-tech">
+                  <span>Python</span>
+                  <span>Django</span>
+                  <span>PostgreSQL</span>
                 </div>
+                <a href="#" class="btn small">View Details</a>
               </div>
             </div>
           </div>
-          
-          <div id="contact" class="content-region hide">
-            <h2>CONTACT</h2>
-            <div class="contact-info center-content">
-              <ul class="contact-links">
-                <li>
-                  <span class="contact-icon">🔗</span>
-                  <a href="https://www.linkedin.com/in/zachary-carrico/" target="_blank" class="large-link">Zac's LinkedIn</a>
-                </li>
-              </ul>
-            </div>
+        </div>
+
+        <div id="blog" class="content-region hide">
+          <h2>BLOG</h2>
+          <div class="blog-container">
+            <!-- Blog post template -->
+            <article class="blog-post">
+              <div class="blog-header">
+                <h3>Title</h3>
+                <div class="blog-meta">
+                  <span class="blog-date"></span>
+                  <span class="blog-category"></span>
+                </div>
+              </div>
+              <div class="blog-content">
+              </div>
+              <div class="blog-footer">
+                <a href="#" class="btn small">Read More</a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div id="contact" class="content-region hide">
+          <h2>CONTACT</h2>
+          <div class="contact-info center-content">
+            <ul class="contact-links">
+              <li>
+                <span class="contact-icon">🔗</span>
+                <a href="https://www.linkedin.com/in/zachary-carrico/" target="_blank" class="large-link">Zac's
+                  LinkedIn</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <footer>
-      <div class="inner">
-        <div class="footer-content">
-          <p>&copy; 2025 Zac Carrico. All Rights Reserved.</p>
-          <p class="footer-quote">"More human than human" — Tyrell Corporation</p>
-        </div>
+  <footer>
+    <div class="inner">
+      <div class="footer-content">
+        <p>&copy; 2025 Zac Carrico. All Rights Reserved.</p>
+        <p class="footer-quote">"More human than human" — Tyrell Corporation</p>
       </div>
-    </footer>
-    
-    <!-- Load additional JS scripts here -->
-    <script type="text/javascript" src="script.js"></script>
-    
-  </body>
+    </div>
+  </footer>
+
+  <!-- Load additional JS scripts here -->
+  <script type="text/javascript" src="script.js"></script>
+
+</body>
+
 </html>

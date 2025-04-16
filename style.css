@@ -807,3 +807,97 @@ textarea.form-control {
     padding: 1rem;
   }
 }
+
+/* Blog Page Styles */
+.blog-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.blog-post {
+  background-color: rgba(10, 10, 15, 0.7);
+  border: 1px solid rgba(0, 194, 186, 0.2);
+  border-radius: 5px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.blog-post:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 194, 186, 0.3);
+}
+
+.blog-post::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+  opacity: 0.8;
+}
+
+.blog-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(0, 194, 186, 0.2);
+  background-color: rgba(1, 198, 199, 0.05);
+}
+
+.blog-meta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.blog-date, .blog-category {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-accent);
+}
+
+.blog-date::before {
+  content: "📅";
+  margin-right: 0.5rem;
+}
+
+.blog-category::before {
+  content: "🏷️";
+  margin-right: 0.5rem;
+}
+
+.blog-content {
+  padding: 1.5rem;
+}
+
+.blog-content p {
+  margin-bottom: 1rem;
+}
+
+.blog-content ul, .blog-content ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.blog-content li {
+  margin-bottom: 0.5rem;
+}
+
+.blog-footer {
+  padding: 0 1.5rem 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Add this to your responsive styles section */
+@media screen and (max-width: 768px) {
+  .blog-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
