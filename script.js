@@ -1,68 +1,73 @@
 // Blade Runner UI effects and interactions
 
-document.addEventListener('DOMContentLoaded', function() {
-  
+document.addEventListener('DOMContentLoaded', function () {
+
   // Initialize menu link behavior
   initMenuLinks();
-  
+
   // Initialize glitch text effect
   initGlitchText();
-  
+
   // Initialize cursor effect
   initCustomCursor();
-  
+
   // Initialize parallax effect
   initParallax();
+
+  // Add to your existing event listeners
+  document.querySelector('a[href="#blog"]').addEventListener('click', function () {
+    loadBlogPosts();
+  });
 });
 
 // Handle menu link clicks and show appropriate content
 function initMenuLinks() {
   const menuLinks = document.querySelectorAll('.main-menu a');
-  
+
   menuLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
+    link.addEventListener('click', function (e) {
       e.preventDefault();
-      
+
       const targetId = this.getAttribute('href').substring(1);
       const contentRegions = document.querySelectorAll('.content-region');
-      
+
       // Hide all content regions
       contentRegions.forEach(region => {
         region.classList.add('hide');
       });
-      
+
       // Show target content region
       const targetRegion = document.getElementById(targetId);
       if (targetRegion) {
         targetRegion.classList.remove('hide');
-        
+
         // Add entry animation
         targetRegion.style.opacity = 0;
         targetRegion.style.transform = 'translateY(20px)';
-        
+
         setTimeout(() => {
           targetRegion.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
           targetRegion.style.opacity = 1;
           targetRegion.style.transform = 'translateY(0)';
         }, 50);
       }
-      
+
       // Update active menu item
       menuLinks.forEach(menuLink => {
         menuLink.classList.remove('active');
       });
-      
+
       this.classList.add('active');
     });
   });
-  
+
   // Show default content section (first one) if URL has no hash
   if (!window.location.hash) {
     const firstContentRegion = document.querySelector('.content-region');
     if (firstContentRegion) {
       firstContentRegion.classList.remove('hide');
     }
-    
+
     const firstMenuLink = document.querySelector('.main-menu a');
     if (firstMenuLink) {
       firstMenuLink.classList.add('active');
@@ -79,7 +84,7 @@ function initMenuLinks() {
 // Initialize glitch text effect
 function initGlitchText() {
   const glitchElements = document.querySelectorAll('.glitch-text');
-  
+
   glitchElements.forEach(element => {
     const text = element.textContent;
     element.setAttribute('data-text', text);
@@ -92,7 +97,7 @@ function initCustomCursor() {
   const cursor = document.createElement('div');
   cursor.classList.add('custom-cursor');
   document.body.appendChild(cursor);
-  
+
   // Add cursor styles
   const style = document.createElement('style');
   style.textContent = `
@@ -135,26 +140,26 @@ function initCustomCursor() {
     }
   `;
   document.head.appendChild(style);
-  
+
   // Update cursor position
   document.addEventListener('mousemove', e => {
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
   });
-  
+
   // Add active class on mouse down
   document.addEventListener('mousedown', () => {
     cursor.classList.add('active');
   });
-  
+
   // Remove active class on mouse up
   document.addEventListener('mouseup', () => {
     cursor.classList.remove('active');
   });
-  
+
   // Add hover effect for interactive elements
   const interactiveElements = document.querySelectorAll('a, button, .interactive');
-  
+
   interactiveElements.forEach(element => {
     element.addEventListener('mouseenter', () => {
       cursor.style.width = '30px';
@@ -162,7 +167,7 @@ function initCustomCursor() {
       cursor.style.opacity = '1';
       cursor.style.borderColor = 'var(--secondary-color)';
     });
-    
+
     element.addEventListener('mouseleave', () => {
       cursor.style.width = '20px';
       cursor.style.height = '20px';
@@ -175,21 +180,21 @@ function initCustomCursor() {
 // Initialize parallax effect for background elements
 function initParallax() {
   const parallaxElements = document.querySelectorAll('.parallax');
-  
+
   document.addEventListener('mousemove', e => {
     const x = e.clientX / window.innerWidth;
     const y = e.clientY / window.innerHeight;
-    
+
     parallaxElements.forEach(element => {
       const speed = element.getAttribute('data-speed') || 2; // 10x slower (was 20)
       const moveX = (x - 0.5) * speed;
       const moveY = (y - 0.5) * speed;
-      
+
       // Use transition for slower movement
       if (!element.style.transition) {
         element.style.transition = 'transform 3s ease-out'; // Slow transition
       }
-      
+
       element.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
     });
   });
@@ -200,7 +205,7 @@ function typeWriter(element, text, speed = 500, delay = 0) { // 10x slower (was 
   let i = 0;
   element.textContent = '';
   element.classList.add('terminal-text');
-  
+
   setTimeout(() => {
     const typing = setInterval(() => {
       if (i < text.length) {
@@ -212,4 +217,58 @@ function typeWriter(element, text, speed = 500, delay = 0) { // 10x slower (was 
       }
     }, speed);
   }, delay);
+}
+
+// Add this function to your script.js file
+function loadBlogPosts() {
+  // Example blog post metadata
+  const blogPosts = [
+    {
+      id: 1,
+      title: "This is a test blog post",
+      date: "2025-01-15",
+      category: "Tech",
+      filename: "test.md"
+    },
+  ];
+
+  const blogContainer = document.getElementById('blog-posts-container');
+  blogContainer.innerHTML = ''; // Clear loading indicator
+
+  blogPosts.forEach(post => {
+    // Create blog post article element
+    const article = document.createElement('article');
+    article.className = 'blog-post';
+
+    // Add blog header
+    article.innerHTML = `
+      <div class="blog-header">
+        <h3>${post.title}</h3>
+        <div class="blog-meta">
+          <span class="blog-date">${post.date}</span>
+          <span class="blog-category">${post.category}</span>
+        </div>
+      </div>
+      <div class="blog-content">Loading content...</div>
+      <div class="blog-footer">
+        <a href="#blog-${post.id}" class="btn small">Read More</a>
+      </div>
+    `;
+
+    blogContainer.appendChild(article);
+
+    // Load and render markdown content
+    fetch(`blog/${post.filename}`)
+      .then(response => response.text())
+      .then(markdown => {
+        const contentDiv = article.querySelector('.blog-content');
+        // Convert markdown to HTML and insert
+        contentDiv.innerHTML = marked.parse(markdown);
+      })
+      .catch(error => {
+        console.error('Error loading blog post:', error);
+        const contentDiv = article.querySelector('.blog-content');
+        contentDiv.innerHTML = '<p>Error loading blog content.</p>';
+      });
+  });
 }
