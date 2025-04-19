@@ -225,10 +225,10 @@ function loadBlogPosts() {
   const blogPosts = [
     {
       id: 1,
-      title: "This is a test blog post",
-      date: "2025-01-15",
+      title: "Resuscitating FastAPI services",
+      date: "2025-04-19",
       category: "Tech",
-      filename: "test.md"
+      filename: "resuscitating_fastapi.md"
     },
   ];
 
@@ -250,9 +250,6 @@ function loadBlogPosts() {
         </div>
       </div>
       <div class="blog-content">Loading content...</div>
-      <div class="blog-footer">
-        <a href="#blog-${post.id}" class="btn small">Read More</a>
-      </div>
     `;
 
     blogContainer.appendChild(article);
@@ -271,4 +268,19 @@ function loadBlogPosts() {
         contentDiv.innerHTML = '<p>Error loading blog content.</p>';
       });
   });
+}
+
+function displayBlogPost(post) {
+  const postContainer = document.getElementById('blog-post-container');
+
+  // Create the blog post HTML
+  const postHTML = `
+    <div class="blog-post">
+      <h2>${post.title}</h2>
+      <p class="post-date">${formatDate(post.date)}</p>
+      <div class="markdown-content">${marked.parse(post.content)}</div>
+    </div>
+  `;
+
+  postContainer.innerHTML = postHTML;
 }
