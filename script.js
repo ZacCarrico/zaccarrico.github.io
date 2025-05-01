@@ -58,15 +58,18 @@ function navigateToSection(targetId) {
       targetRegion.style.transform = 'translateY(0)';
     }, 50);
 
-    // Update active menu item
-    const menuLinks = document.querySelectorAll('.main-menu a');
+    // Update active menu items in both menus
+    const menuLinks = document.querySelectorAll('.main-menu a, .footer-menu a');
     menuLinks.forEach(menuLink => {
       menuLink.classList.remove('active');
     });
-    const correspondingMenuLink = document.querySelector(`.main-menu a[href="#${targetId}"]`);
-    if (correspondingMenuLink) {
-      correspondingMenuLink.classList.add('active');
-    }
+
+    const targetSelector = `a[href="#${targetId}"]`;
+    const mainMenuLink = document.querySelector(`.main-menu ${targetSelector}`);
+    const footerMenuLink = document.querySelector(`.footer-menu ${targetSelector}`);
+
+    if (mainMenuLink) mainMenuLink.classList.add('active');
+    if (footerMenuLink) footerMenuLink.classList.add('active');
 
     // If navigating to blog, ensure posts are loaded
     if (targetId === 'blog') {
@@ -77,7 +80,7 @@ function navigateToSection(targetId) {
 
 // Handle menu link clicks and show appropriate content
 function initMenuLinks() {
-  const menuLinks = document.querySelectorAll('.main-menu a');
+  const menuLinks = document.querySelectorAll('.main-menu a, .footer-menu a');
 
   menuLinks.forEach(link => {
     link.addEventListener('click', function (e) {
@@ -89,6 +92,15 @@ function initMenuLinks() {
       window.location.hash = targetId;
 
       navigateToSection(targetId);
+
+      // Update active state in both menus
+      document.querySelectorAll('.main-menu a, .footer-menu a').forEach(menuLink => {
+        if (menuLink.getAttribute('href') === this.getAttribute('href')) {
+          menuLink.classList.add('active');
+        } else {
+          menuLink.classList.remove('active');
+        }
+      });
     });
   });
 
@@ -105,6 +117,15 @@ function handleHashChange() {
     // Extract the targetId from the hash
     const targetId = window.location.hash.substring(1);
     navigateToSection(targetId);
+
+    // Update active classes on both menus
+    document.querySelectorAll('.main-menu a, .footer-menu a').forEach(menuLink => {
+      if (menuLink.getAttribute('href') === window.location.hash) {
+        menuLink.classList.add('active');
+      } else {
+        menuLink.classList.remove('active');
+      }
+    });
   } else {
     // Show default content section (first one) if URL has no hash
     const firstContentRegion = document.querySelector('.content-region');
@@ -112,9 +133,19 @@ function handleHashChange() {
       firstContentRegion.classList.remove('hide');
     }
 
+    // Set active class on first menu items in both menus
     const firstMenuLink = document.querySelector('.main-menu a');
+    const firstFooterLink = document.querySelector('.footer-menu a');
+
     if (firstMenuLink) {
+      document.querySelectorAll('.main-menu a, .footer-menu a').forEach(link => {
+        link.classList.remove('active');
+      });
+
       firstMenuLink.classList.add('active');
+      if (firstFooterLink) {
+        firstFooterLink.classList.add('active');
+      }
     }
   }
 }
