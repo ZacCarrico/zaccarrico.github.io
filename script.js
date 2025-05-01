@@ -25,46 +25,55 @@ document.addEventListener('DOMContentLoaded', function () {
     button.addEventListener('click', function (e) {
       e.preventDefault();
       const targetId = this.getAttribute('href').substring(1);
-      const contentRegions = document.querySelectorAll('.content-region');
 
-      // Hide all content regions
-      contentRegions.forEach(region => {
-        region.classList.add('hide');
-      });
+      // Update URL hash to maintain state on refresh
+      window.location.hash = targetId;
 
-      // Show target content region
-      const targetRegion = document.getElementById(targetId);
-      if (targetRegion) {
-        targetRegion.classList.remove('hide');
-
-        // Add entry animation
-        targetRegion.style.opacity = 0;
-        targetRegion.style.transform = 'translateY(20px)';
-
-        setTimeout(() => {
-          targetRegion.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-          targetRegion.style.opacity = 1;
-          targetRegion.style.transform = 'translateY(0)';
-        }, 50);
-
-        // Update active menu item
-        const menuLinks = document.querySelectorAll('.main-menu a');
-        menuLinks.forEach(menuLink => {
-          menuLink.classList.remove('active');
-        });
-        const correspondingMenuLink = document.querySelector(`.main-menu a[href="#${targetId}"]`);
-        if (correspondingMenuLink) {
-          correspondingMenuLink.classList.add('active');
-        }
-
-        // If navigating to blog, ensure posts are loaded
-        if (targetId === 'blog') {
-          loadBlogPosts();
-        }
-      }
+      navigateToSection(targetId);
     });
   });
 });
+
+// Function to navigate to a specific section
+function navigateToSection(targetId) {
+  const contentRegions = document.querySelectorAll('.content-region');
+
+  // Hide all content regions
+  contentRegions.forEach(region => {
+    region.classList.add('hide');
+  });
+
+  // Show target content region
+  const targetRegion = document.getElementById(targetId);
+  if (targetRegion) {
+    targetRegion.classList.remove('hide');
+
+    // Add entry animation
+    targetRegion.style.opacity = 0;
+    targetRegion.style.transform = 'translateY(20px)';
+
+    setTimeout(() => {
+      targetRegion.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      targetRegion.style.opacity = 1;
+      targetRegion.style.transform = 'translateY(0)';
+    }, 50);
+
+    // Update active menu item
+    const menuLinks = document.querySelectorAll('.main-menu a');
+    menuLinks.forEach(menuLink => {
+      menuLink.classList.remove('active');
+    });
+    const correspondingMenuLink = document.querySelector(`.main-menu a[href="#${targetId}"]`);
+    if (correspondingMenuLink) {
+      correspondingMenuLink.classList.add('active');
+    }
+
+    // If navigating to blog, ensure posts are loaded
+    if (targetId === 'blog') {
+      loadBlogPosts();
+    }
+  }
+}
 
 // Handle menu link clicks and show appropriate content
 function initMenuLinks() {
@@ -75,40 +84,29 @@ function initMenuLinks() {
       e.preventDefault();
 
       const targetId = this.getAttribute('href').substring(1);
-      const contentRegions = document.querySelectorAll('.content-region');
 
-      // Hide all content regions
-      contentRegions.forEach(region => {
-        region.classList.add('hide');
-      });
+      // Update URL hash to maintain state on refresh
+      window.location.hash = targetId;
 
-      // Show target content region
-      const targetRegion = document.getElementById(targetId);
-      if (targetRegion) {
-        targetRegion.classList.remove('hide');
-
-        // Add entry animation
-        targetRegion.style.opacity = 0;
-        targetRegion.style.transform = 'translateY(20px)';
-
-        setTimeout(() => {
-          targetRegion.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-          targetRegion.style.opacity = 1;
-          targetRegion.style.transform = 'translateY(0)';
-        }, 50);
-      }
-
-      // Update active menu item
-      menuLinks.forEach(menuLink => {
-        menuLink.classList.remove('active');
-      });
-
-      this.classList.add('active');
+      navigateToSection(targetId);
     });
   });
 
-  // Show default content section (first one) if URL has no hash
-  if (!window.location.hash) {
+  // Check URL hash on page load or refresh
+  handleHashChange();
+
+  // Also listen for hash changes
+  window.addEventListener('hashchange', handleHashChange);
+}
+
+// Function to handle hash changes and page refreshes
+function handleHashChange() {
+  if (window.location.hash) {
+    // Extract the targetId from the hash
+    const targetId = window.location.hash.substring(1);
+    navigateToSection(targetId);
+  } else {
+    // Show default content section (first one) if URL has no hash
     const firstContentRegion = document.querySelector('.content-region');
     if (firstContentRegion) {
       firstContentRegion.classList.remove('hide');
@@ -117,12 +115,6 @@ function initMenuLinks() {
     const firstMenuLink = document.querySelector('.main-menu a');
     if (firstMenuLink) {
       firstMenuLink.classList.add('active');
-    }
-  } else {
-    // If URL has hash, click the corresponding menu link
-    const targetLink = document.querySelector(`.main-menu a[href="${window.location.hash}"]`);
-    if (targetLink) {
-      targetLink.click();
     }
   }
 }
