@@ -18,6 +18,52 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelector('a[href="#blog"]').addEventListener('click', function () {
     loadBlogPosts();
   });
+
+  // Add event listeners for home section buttons
+  const homeButtons = document.querySelectorAll('.cta-buttons a');
+  homeButtons.forEach(button => {
+    button.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const contentRegions = document.querySelectorAll('.content-region');
+
+      // Hide all content regions
+      contentRegions.forEach(region => {
+        region.classList.add('hide');
+      });
+
+      // Show target content region
+      const targetRegion = document.getElementById(targetId);
+      if (targetRegion) {
+        targetRegion.classList.remove('hide');
+
+        // Add entry animation
+        targetRegion.style.opacity = 0;
+        targetRegion.style.transform = 'translateY(20px)';
+
+        setTimeout(() => {
+          targetRegion.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          targetRegion.style.opacity = 1;
+          targetRegion.style.transform = 'translateY(0)';
+        }, 50);
+
+        // Update active menu item
+        const menuLinks = document.querySelectorAll('.main-menu a');
+        menuLinks.forEach(menuLink => {
+          menuLink.classList.remove('active');
+        });
+        const correspondingMenuLink = document.querySelector(`.main-menu a[href="#${targetId}"]`);
+        if (correspondingMenuLink) {
+          correspondingMenuLink.classList.add('active');
+        }
+
+        // If navigating to blog, ensure posts are loaded
+        if (targetId === 'blog') {
+          loadBlogPosts();
+        }
+      }
+    });
+  });
 });
 
 // Handle menu link clicks and show appropriate content
