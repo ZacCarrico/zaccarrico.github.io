@@ -901,6 +901,13 @@ textarea.form-control {
   background-color: rgba(1, 198, 199, 0.05);
 }
 
+/* Add style for blog post titles */
+.blog-header h3 {
+  font-size: 1.95rem;
+  /* 30% larger than the default h3 size of 1.5rem */
+  text-transform: none;
+}
+
 .blog-meta {
   display: flex;
   gap: 1rem;

@@ -271,14 +271,14 @@ function loadBlogPosts() {
   const blogPosts = [
     {
       id: 2,
-      title: "Friendly model workflows",
+      title: "Friendly Model Workflows",
       date: "2025-05-01",
       category: "Tech",
       filename: "friendly_model_workflows.md"
     },
     {
       id: 1,
-      title: "Resuscitating FastAPI services",
+      title: "Resuscitating FastAPI Services",
       date: "2025-04-19",
       category: "Tech",
       filename: "resuscitating_fastapi.md"

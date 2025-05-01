@@ -1,5 +1,3 @@
-# Friendly Model Workflows
-
 I frequently encounter model training and inference workflows that can only be run end-to-end. This approach slows down future improvements, complicates debugging, and prevents component reuse. This post discusses how to make model workflows more friendly.
 
 A friendly workflow means that each step:
