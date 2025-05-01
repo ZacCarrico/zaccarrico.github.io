@@ -224,6 +224,13 @@ function loadBlogPosts() {
   // Example blog post metadata
   const blogPosts = [
     {
+      id: 2,
+      title: "Friendly model workflows",
+      date: "2025-05-01",
+      category: "Tech",
+      filename: "friendly_model_workflows.md"
+    },
+    {
       id: 1,
       title: "Resuscitating FastAPI services",
       date: "2025-04-19",
