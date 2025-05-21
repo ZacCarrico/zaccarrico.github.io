@@ -3,7 +3,10 @@ Chatbots have tremendous potential to help people address their medical question
 1. Free
 1. Immediacy. Answers are available immediately. In the best case, this can save lives.
 1. The answers are written down. Everyone has had the experience of being barraged with information and words we don't understand during a medical visit. We feel later that we couldn't understand or remember things from the visit.
+1. Endlessly patient
 1. Less embarrassment. Chatbots don't make you feel as embarrassed about ignorant questions and describing personal things.
+1. Up-to-date with current literature
+1. More consistent than seeing different doctors and probably more consistent than the same doctor.
 
 I've evaluated chatbots abilities to answer medical advice and there are several major limitations currently:  
 1. Visual inspection. It's hard to get a good image of inside your throat or a good image of a skin change.
@@ -11,7 +14,7 @@ I've evaluated chatbots abilities to answer medical advice and there are several
 
 Problems shared by human medical practitioners and chatbots:  
 1. Treating the average. Medical practitioners and chatbots are providing answers that are appropriate for the average person, but no one is the average.
-1. Both recommend treatments that are often worse than no treatment.
+1. Both recommend treatments that are often worse than no treatment or don't truly improve total quality of life (e.g. painful cancer treatments with limited extension of life)
 1. Not following up sufficiently long in the future to evaluate whether recommended treatments worked.
 
 Regarding data privacy, I don't believe having medical records stored by an EHR is inherently safer than having them stored by chatbot company. 
