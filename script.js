@@ -293,6 +293,13 @@ function loadBlogPosts() {
   // Example blog post metadata
   const blogPosts = [
     {
+      id: 3,
+      title: "Chatbots and Medical Advice",
+      date: "2025-05-21",
+      category: "Tech",
+      filename: "chatbots_medical_help.md"
+    },
+    {
       id: 2,
       title: "Friendly Model Workflows",
       date: "2025-05-01",
