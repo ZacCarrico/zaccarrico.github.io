@@ -1121,7 +1121,7 @@ textarea.form-control {
 }
 
 .blog-content pre {
-  background-color: rgba(11, 22, 34, 0.8);
+  background-color: rgba(11, 22, 34, 0.8) !important;
   border: 1px solid var(--secondary-color);
   border-radius: 5px;
   padding: 1rem;
@@ -1132,11 +1132,58 @@ textarea.form-control {
 }
 
 .blog-content pre code {
-  background: none;
+  background: none !important;
   border: none;
   padding: 0;
   color: var(--text-color);
   font-size: inherit;
+}
+
+/* Prism.js theme customization to match Blade Runner style */
+pre[class*="language-"] {
+  background-color: rgba(11, 22, 34, 0.8) !important;
+  border: 1px solid var(--secondary-color) !important;
+  box-shadow: 0 0 10px rgba(1, 198, 199, 0.2) !important;
+}
+
+code[class*="language-"] {
+  color: var(--text-color) !important;
+  font-family: 'Courier New', 'Consolas', 'Monaco', monospace !important;
+}
+
+/* Python syntax highlighting colors */
+.token.keyword {
+  color: var(--primary-color) !important;
+}
+
+.token.string {
+  color: var(--highlight-color) !important;
+}
+
+.token.comment {
+  color: rgba(197, 209, 220, 0.6) !important;
+  font-style: italic;
+}
+
+.token.number {
+  color: var(--tertiary-color) !important;
+}
+
+.token.operator,
+.token.punctuation {
+  color: var(--secondary-color) !important;
+}
+
+.token.function {
+  color: var(--secondary-color) !important;
+}
+
+.token.class-name {
+  color: var(--primary-color) !important;
+}
+
+.token.builtin {
+  color: var(--tertiary-color) !important;
 }
 
 .blog-content blockquote {

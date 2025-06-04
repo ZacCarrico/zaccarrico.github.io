@@ -290,6 +290,15 @@ function typeWriter(element, text, speed = 500, delay = 0) { // 10x slower (was 
 
 // Add this function to your script.js file
 function loadBlogPosts() {
+  // Configure marked.js to work with Prism.js
+  marked.setOptions({
+    highlight: function (code, lang) {
+      // Return code with proper Prism.js class
+      return code;
+    },
+    langPrefix: 'language-' // This adds language-{lang} class to code blocks
+  });
+
   // Example blog post metadata
   const blogPosts = [
     {
@@ -352,6 +361,11 @@ function loadBlogPosts() {
         // Convert markdown to HTML and insert
         contentDiv.innerHTML = marked.parse(markdown);
         contentDiv.classList.add('markdown-content');
+
+        // Trigger Prism.js syntax highlighting
+        if (typeof Prism !== 'undefined') {
+          Prism.highlightAllUnder(contentDiv);
+        }
       })
       .catch(error => {
         console.error('Error loading blog post:', error);
