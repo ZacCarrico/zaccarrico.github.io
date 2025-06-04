@@ -293,6 +293,13 @@ function loadBlogPosts() {
   // Example blog post metadata
   const blogPosts = [
     {
+      id: 4,
+      title: "The Curious Case of the Vanishing GPU Processes",
+      date: "2025-06-03",
+      category: "Tech",
+      filename: "nccl_timeouts.md"
+    },
+    {
       id: 3,
       title: "Chatbots and Medical Advice",
       date: "2025-05-21",
