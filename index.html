@@ -62,8 +62,24 @@
     .markdown-content ul,
     .markdown-content ol {
       margin-left: 2rem;
+      padding-left: 1rem;
       font-size: 1.3rem;
       /* Match paragraph text size */
+    }
+
+    .markdown-content ul {
+      list-style-type: disc;
+      list-style-position: outside;
+    }
+
+    .markdown-content ol {
+      list-style-type: decimal;
+      list-style-position: outside;
+    }
+
+    .markdown-content li {
+      display: list-item;
+      margin-bottom: 0.5rem;
     }
   </style>
 
