@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="32" height="32" fill="#0a0a0a"/>
+  
+  <!-- Glowing border -->
+  <rect x="2" y="2" width="28" height="28" fill="none" stroke="#00ff00" stroke-width="1.5" stroke-opacity="0.8"/>
+  
+  <!-- Z letter -->
+  <path d="M8 8 L24 8 M24 8 L8 24 M8 24 L24 24" 
+        stroke="#00ff00" 
+        stroke-width="2.5" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"
+        fill="none"/>
+</svg> 
