@@ -9,11 +9,21 @@
   --background-elements: rgba(17, 33, 49, 0.7);
   --text-color: #c5d1dc;
   --text-highlight: #ffffff;
-  --font-main: 'Rajdhani', 'Roboto', sans-serif;
-  --font-accent: 'Orbitron', 'Rajdhani', sans-serif;
+  --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  --font-accent: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
   --grid-color: rgba(1, 198, 199, 0.12);
   --glow-primary: rgba(244, 104, 60, 0.6);
   --glow-secondary: rgba(1, 198, 199, 0.6);
+}
+
+/* Ensure good tilde rendering by using fonts with curved tildes */
+body,
+p,
+div,
+span,
+li,
+.blog-content {
+  font-feature-settings: "liga" 1, "kern" 1;
 }
 
 * {
@@ -1046,11 +1056,11 @@ textarea.form-control {
   line-height: 1.8;
 }
 
-.blog-content h1, 
-.blog-content h2, 
-.blog-content h3, 
-.blog-content h4, 
-.blog-content h5, 
+.blog-content h1,
+.blog-content h2,
+.blog-content h3,
+.blog-content h4,
+.blog-content h5,
 .blog-content h6 {
   color: var(--text-highlight);
   margin-bottom: 1rem;
@@ -1107,6 +1117,7 @@ textarea.form-control {
   border-radius: 3px;
   font-family: 'Courier New', monospace;
   border: 1px solid rgba(1, 198, 199, 0.2);
+  font-size: 0.85rem;
 }
 
 .blog-content pre {
@@ -1117,6 +1128,7 @@ textarea.form-control {
   margin: 1.5rem 0;
   overflow-x: auto;
   box-shadow: 0 0 10px rgba(1, 198, 199, 0.2);
+  font-size: 0.9rem;
 }
 
 .blog-content pre code {
@@ -1124,6 +1136,7 @@ textarea.form-control {
   border: none;
   padding: 0;
   color: var(--text-color);
+  font-size: inherit;
 }
 
 .blog-content blockquote {
