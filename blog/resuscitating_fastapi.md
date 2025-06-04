@@ -6,8 +6,8 @@ FastAPI is a framework for building APIs with Python. It abstracts many of the l
 ### The code
 There are three endpoints that are relevant to this problem:
 `/predict`
-`/livez[^1]`
-`/readyz[^1]`
+`/livez`<sup><a href="#fn1">1</a></sup>
+`/readyz`<sup><a href="#fn1">1</a></sup>
 
 
 
@@ -72,4 +72,4 @@ async def predict(request: Request):
 
 Now the `predict_handler` is running in the "predict_handler" thread pool and `livez` is running in the default thread pool. This means that the `livez` tasks are added to a separate queue than the `predict_handler` tasks. As a result `livez` tasks don't need to wait for `predict_handler` tasks to finish before they can run.
 
-[^1]: The `z` at the end is a convention because it helps avoid naming conflicts in case you wanted to use a public endpoint called /live or /ready.
+<a id="fn1"></a><sup>1</sup> The `z` at the end is a convention because it helps avoid naming conflicts in case you wanted to use a public endpoint called /live or /ready.

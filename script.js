@@ -366,12 +366,36 @@ function loadBlogPosts() {
         if (typeof Prism !== 'undefined') {
           Prism.highlightAllUnder(contentDiv);
         }
+
+        // Setup footnote smooth scrolling
+        setupFootnoteScrolling(contentDiv);
       })
       .catch(error => {
         console.error('Error loading blog post:', error);
         const contentDiv = article.querySelector('.blog-content');
         contentDiv.innerHTML = '<p>Error loading blog content.</p>';
       });
+  });
+}
+
+// Function to setup smooth scrolling for footnote links
+function setupFootnoteScrolling(container) {
+  const footnoteLinks = container.querySelectorAll('a[href^="#fn"]');
+
+  footnoteLinks.forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = container.querySelector(`#${targetId}`);
+
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
+      }
+    });
   });
 }
 
