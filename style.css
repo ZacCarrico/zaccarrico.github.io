@@ -971,6 +971,11 @@ textarea.form-control {
   .blog-header h3 {
     font-size: 1.5rem;
   }
+
+  .blog-content ul,
+  .blog-content ol {
+    font-size: 1rem;
+  }
 }
 
 /* Blog Page Styles */
