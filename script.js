@@ -304,7 +304,7 @@ function loadBlogPosts() {
       title: "Chatbots and Medical Advice",
       date: "2025-05-21",
       category: "Tech",
-      filename: "chatbots_medical_help.md"
+      filename: "chatbot_medical_help.md"
     },
     {
       id: 2,
@@ -351,6 +351,7 @@ function loadBlogPosts() {
         const contentDiv = article.querySelector('.blog-content');
         // Convert markdown to HTML and insert
         contentDiv.innerHTML = marked.parse(markdown);
+        contentDiv.classList.add('markdown-content');
       })
       .catch(error => {
         console.error('Error loading blog post:', error);
