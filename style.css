@@ -974,7 +974,7 @@ textarea.form-control {
 
   .blog-content ul,
   .blog-content ol {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 }
 
@@ -1094,6 +1094,7 @@ textarea.form-control {
   padding-left: 2rem;
   margin-left: 1rem;
   color: var(--text-color);
+  font-size: 0.9rem;
 }
 
 .blog-content ul {
