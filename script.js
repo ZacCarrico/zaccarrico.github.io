@@ -302,6 +302,13 @@ function loadBlogPosts() {
   // Example blog post metadata
   const blogPosts = [
     {
+      id: 5,
+      title: "Training Regression Tests Reflections",
+      date: "2025-08-29",
+      category: "Tech",
+      filename: "training_regression_tests.md"
+    },
+    {
       id: 4,
       title: "The Curious Case of the Vanishing GPU Processes",
       date: "2025-06-03",
