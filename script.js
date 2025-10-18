@@ -23,13 +23,19 @@ document.addEventListener('DOMContentLoaded', function () {
   const homeButtons = document.querySelectorAll('.cta-buttons a');
   homeButtons.forEach(button => {
     button.addEventListener('click', function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href').substring(1);
+      const href = this.getAttribute('href');
 
-      // Update URL hash to maintain state on refresh
-      window.location.hash = targetId;
+      // Only prevent default for internal links (starting with #)
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        const targetId = href.substring(1);
 
-      navigateToSection(targetId);
+        // Update URL hash to maintain state on refresh
+        window.location.hash = targetId;
+
+        navigateToSection(targetId);
+      }
+      // External links (like GitHub) will work normally
     });
   });
 });
@@ -84,23 +90,29 @@ function initMenuLinks() {
 
   menuLinks.forEach(link => {
     link.addEventListener('click', function (e) {
-      e.preventDefault();
+      const href = this.getAttribute('href');
 
-      const targetId = this.getAttribute('href').substring(1);
+      // Only prevent default for internal links (starting with #)
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
 
-      // Update URL hash to maintain state on refresh
-      window.location.hash = targetId;
+        const targetId = href.substring(1);
 
-      navigateToSection(targetId);
+        // Update URL hash to maintain state on refresh
+        window.location.hash = targetId;
 
-      // Update active state in both menus
-      document.querySelectorAll('.main-menu a, .footer-menu a').forEach(menuLink => {
-        if (menuLink.getAttribute('href') === this.getAttribute('href')) {
-          menuLink.classList.add('active');
-        } else {
-          menuLink.classList.remove('active');
-        }
-      });
+        navigateToSection(targetId);
+
+        // Update active state in both menus
+        document.querySelectorAll('.main-menu a, .footer-menu a').forEach(menuLink => {
+          if (menuLink.getAttribute('href') === this.getAttribute('href')) {
+            menuLink.classList.add('active');
+          } else {
+            menuLink.classList.remove('active');
+          }
+        });
+      }
+      // External links (like GitHub) will work normally
     });
   });
 
