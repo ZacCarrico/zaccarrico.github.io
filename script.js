@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // Initialize parallax effect
   initParallax();
 
+  // Terminal animation removed
+
   // Add to your existing event listeners
   document.querySelector('a[href="#blog"]').addEventListener('click', function () {
     loadBlogPosts();
@@ -81,6 +83,8 @@ function navigateToSection(targetId) {
     if (targetId === 'blog') {
       loadBlogPosts();
     }
+
+    // Home section navigation - no animation needed
   }
 }
 
@@ -298,6 +302,60 @@ function typeWriter(element, text, speed = 500, delay = 0) { // 10x slower (was 
       }
     }, speed);
   }, delay);
+}
+
+// Store active typing intervals globally to prevent duplicates
+let activeTypingIntervals = [];
+
+// Initialize terminal animation for welcome page
+function initTerminalAnimation() {
+  // Clear any existing intervals first
+  activeTypingIntervals.forEach(interval => clearInterval(interval));
+  activeTypingIntervals = [];
+
+  const lines = [
+    '> initializing_system...',
+    '> loading_profile...',
+    '> Zac Carrico: AI Engineer | Scientist',
+    '> status: Clauding',
+    '> location: Austin, TX'
+  ];
+
+  const typingSpeed = 50; // milliseconds per character
+  const lineDelay = 400; // delay between lines
+
+  lines.forEach((lineText, index) => {
+    const lineElement = document.getElementById(`terminal-line-${index + 1}`);
+    if (lineElement) {
+      animateTerminalLine(lineElement, lineText, index * lineDelay, typingSpeed);
+    }
+  });
+}
+
+// Animate a single terminal line with typewriter effect
+function animateTerminalLine(element, text, initialDelay, speed) {
+  let charIndex = 0;
+  element.textContent = ''; // Clear any existing content
+  element.classList.add('typing');
+
+  setTimeout(() => {
+    const typingInterval = setInterval(() => {
+      if (charIndex < text.length) {
+        element.textContent += text.charAt(charIndex);
+        charIndex++;
+      } else {
+        clearInterval(typingInterval);
+        element.classList.remove('typing');
+        // Remove from active intervals array
+        const index = activeTypingIntervals.indexOf(typingInterval);
+        if (index > -1) {
+          activeTypingIntervals.splice(index, 1);
+        }
+      }
+    }, speed);
+    // Store interval ID so we can clear it later if needed
+    activeTypingIntervals.push(typingInterval);
+  }, initialDelay);
 }
 
 // Add this function to your script.js file

@@ -105,6 +105,11 @@ header {
   background-color: rgba(11, 22, 34, 0.8);
 }
 
+/* Hide header on home/landing page */
+body:has(#home.content-region:not(.hide)) header {
+  display: none;
+}
+
 header::before {
   content: "";
   position: absolute;
@@ -231,6 +236,78 @@ h1 {
   padding: 2rem 0;
   min-height: calc(100vh - 200px);
   position: relative;
+}
+
+/* Landing page styles */
+#home.content-region {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hide home section when viewing other pages */
+#home.content-region.hide {
+  display: none;
+}
+
+.landing-page {
+  text-align: center;
+}
+
+.landing-page h1 {
+  font-size: 3.5rem;
+  margin-bottom: 3rem;
+}
+
+.landing-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.landing-menu li {
+  margin: 0;
+}
+
+.landing-menu a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-family: var(--font-accent);
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  position: relative;
+  transition: color 0.3s ease;
+  display: inline-block;
+}
+
+.landing-menu a:hover {
+  color: var(--primary-color);
+  text-shadow: 0 0 8px var(--glow-primary);
+}
+
+.landing-menu a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  transition: width 0.3s ease;
+}
+
+.landing-menu a:hover::after {
+  width: 100%;
 }
 
 .inner {
@@ -476,6 +553,28 @@ footer {
 }
 
 /* Home Page Styles */
+.home-center {
+  text-align: center;
+  padding: 4rem 2rem;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-center h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 15px var(--glow-secondary);
+}
+
+.home-center p {
+  font-size: 1.3rem;
+  color: var(--text-color);
+  opacity: 0.9;
+}
+
 .intro-text {
   font-size: 1.2rem;
   max-width: 800px;
@@ -684,6 +783,40 @@ textarea.form-control {
   backdrop-filter: blur(3px);
 }
 
+/* Terminal Console Styles */
+.terminal-console {
+  background-color: rgba(5, 8, 14, 0.9);
+  border: 1px solid var(--secondary-color);
+  padding: 1.5rem;
+  margin-top: 2rem;
+  font-family: 'Courier New', 'Consolas', 'Monaco', monospace;
+  font-size: 1.1rem;
+  color: var(--secondary-color);
+  box-shadow: 0 0 15px var(--glow-secondary);
+  border-radius: 3px;
+  min-height: 150px;
+}
+
+.terminal-line {
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in forwards;
+}
+
+.terminal-line.typing::after {
+  content: "▌";
+  animation: cursor-blink 1s infinite step-end;
+  color: var(--secondary-color);
+  margin-left: 2px;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
 
 /* Data Box (replacing quote box) */
 .data-box {
@@ -975,6 +1108,15 @@ textarea.form-control {
   .blog-content ul,
   .blog-content ol {
     font-size: 0.9rem;
+  }
+
+  .terminal-console {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .terminal-line {
+    margin-bottom: 0.6rem;
   }
 }
 
