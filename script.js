@@ -373,7 +373,7 @@ function loadBlogPosts() {
   const blogPosts = [
     {
       id: 5,
-      title: "Training Regression Tests Reflections",
+      title: "Model training regression tests",
       date: "2025-08-29",
       category: "Tech",
       filename: "training_regression_tests.md"
@@ -411,10 +411,33 @@ function loadBlogPosts() {
   const blogContainer = document.getElementById('blog-posts-container');
   blogContainer.innerHTML = ''; // Clear loading indicator
 
+  // Create navigation links section
+  const nav = document.createElement('nav');
+  nav.className = 'blog-nav';
+  nav.innerHTML = `
+    <ul class="blog-nav-list">
+      ${blogPosts.map(post => `<li><a href="#blog-post-${post.id}" class="blog-nav-link">${post.title}</a></li>`).join('')}
+    </ul>
+  `;
+  blogContainer.appendChild(nav);
+
+  // Add click handlers for smooth scrolling
+  nav.querySelectorAll('.blog-nav-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
   blogPosts.forEach(post => {
     // Create blog post article element
     const article = document.createElement('article');
     article.className = 'blog-post';
+    article.id = `blog-post-${post.id}`;
 
     // Add blog header
     article.innerHTML = `
