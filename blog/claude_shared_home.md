@@ -1,63 +1,56 @@
-Motivation
-We need a way to standardize and share context and permissions accross all you Claude Code sessions. 
-What this solves
-* There's no way to keep the same Claude Code home dir (~/.claude) across computers
-* Sharing and git tracking user-level scoped Claude Code configurations
-* The current Anthropic solution to standardizing is heavy-handed. It overrides, rather
- than provides a baseline
+Claude Code stores user-level configuration in `~/.claude`, but there's no built-in way to sync this across machines or share a baseline config with your team. Anthropic's managed settings solution exists, but it overrides your preferences entirely rather than merging with them.
 
-How it solves this problem
-* Create a GitHub repo for the files you want to share
-* The key files are settings.json, CLAUDE.md, .gitignore
+The fix is simple: turn `~/.claude` into a git repo.
 
-To allow people to update their Claude Code home dir, you can run these commands.
-Note: RUNNING THE FOLLOWING COMMAND WILL REPLACE SPECIFIC FILES IN ~/.claude WITH THE FILES IN THIS REPO. It copies the duplicate files in ~/.claude into \~/.claude/old_files/ so it's non-destructive.
+## What You Can Share
 
-Run these commands to clone this repo.
+- **CLAUDE.md** — Instructions and context Claude loads at startup
+- **settings.json** — Permissions, environment variables, and tool behavior
+- **commands/** — Custom slash commands (invoked with `/command-name`)
+- **MCP server configs** — Additional tools and integrations
+
+These files merge with any project-level `.claude/` directory, with project settings taking precedence.
+
+## Setup
+
+This script initializes `~/.claude` as a git repo and pulls your shared config. Existing files are backed up, not overwritten.
 
 ```bash
-cd ~/.claude  # this assumes you've already installed Claude Code
-# suffix old_files with a timestamp
+cd ~/.claude
 ts="$(date +%Y%m%d_%H%M%S)"
 backup_dir="old_files_$ts"
 mkdir -p "$backup_dir"
 
 git init
-git remote add origin {claude-home-repo}
+git remote add origin https://github.com/yourusername/claude-home.git
 git fetch origin
 
-# move local files with the same name as those in the remote repo to $backup_dir/
+# Back up any conflicting files
 git checkout main 2>&1 | grep "^[[:space:]]" | xargs -r -I {} mv "{}" "$backup_dir/"
 
 git reset --hard origin/main
 git branch --set-upstream-to=origin/main main
 ```
-The files in this repo are merged with files in a specific project repo's .claude/.
 
-Key points about the Claude Code configuration system
-Memory files (CLAUDE.md): Contain instructions and context that Claude loads at startup
-Settings files (JSON): Configure permissions, environment variables, and tool behavior
-Inheritance: Settings are merged. If the same settings are in both the home dir and project dir, the project dir's settings override the home dir's
-Slash commands: Custom commands that can be invoked during a session with /command-name
-MCP servers: Extend Claude Code with additional tools and integrations
+## The .gitignore Trick
 
+Since `~/.claude` contains session data and other generated files, the `.gitignore` uses an inverted pattern — ignore everything, then explicitly track only what you want:
 
-This .gitignore is unusual --- we ignore everything and then add back the files we want to commit.
 ```
-# ignore everything in this dir
+# Ignore everything
 *
 
-# track these files
+# Track these files
 !.gitignore
 !README.md
 !AGENTS.md
 !CLAUDE.md
 !settings.json
 
-# track commands directory and specific files within it
+# Track specific commands
 !commands/
 commands/*
 !commands/linear-create.md
 ```
 
-The README
+This keeps your repo clean while letting you selectively version the files that matter.
