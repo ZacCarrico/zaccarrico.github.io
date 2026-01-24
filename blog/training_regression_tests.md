@@ -1,5 +1,3 @@
-# Training Regression Tests: Lessons Learned
-
 I've made many changes to model training pipelines that have unexpected negative consequences. Some issues only reveal themselves during longer training jobs or when using different training inputs. In an attempt to catch these unexpected regressions and create a logbook of improvements, I decided to implement automated regression tests. I thought this would be similar to writing unit tests, but more extensive—however, it proved much trickier for reasons I'll explain below.
 
 ## What I Wanted to Test
