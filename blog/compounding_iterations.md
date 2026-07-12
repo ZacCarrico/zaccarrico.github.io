@@ -28,7 +28,7 @@ At <var>R</var> = 0.1, one iteration gives 1.10. Two, at 5% each, give 1.1025. P
 
 It's unrealistic to keep the rate the same as you increase iterations -- doing the same amount of work in half the time would mean you're working twice as fast or twice as long. I'm assuming you're already working at your capacity so this blog is about working smarter.
 
-More iterations slice the same pie thinner. Real gains come from a bigger pie, and that comes from learning.
+More iterations slice the same pie thinner. Real gains come from a bigger pie, and that comes from learning. Unlike R, C doesn't divide when you iterate faster. Each iteration produces a new learning signal you didn't have before — shipping twice as often accumulates twice as many C's in the same period. That's the real case for shorter cycles: not compounding, but more opportunities to learn. You can continue to get linear improvements by increasing iteration rate until that iteration time is shorter than the time necessary to learn something from it.
 
 ## Two ways to grow the pie
 
