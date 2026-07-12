@@ -1094,7 +1094,7 @@ textarea.form-control {
 
   .blog-content pre {
     overflow-x: auto;
-    font-size: 0.85rem;
+    font-size: 1rem;
   }
 
   .blog-header {
@@ -1308,7 +1308,8 @@ textarea.form-control {
   margin: 1.5rem 0;
   overflow-x: auto;
   box-shadow: 0 0 10px rgba(1, 198, 199, 0.2);
-  font-size: 0.9rem;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .blog-content pre code {
@@ -1317,6 +1318,39 @@ textarea.form-control {
   padding: 0;
   color: var(--text-color);
   font-size: inherit;
+}
+
+/* Inline math variables (e.g. a, g, N) set apart from prose */
+.blog-content var {
+  font-family: 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--highlight-color);
+  padding: 0 0.06em;
+}
+
+/* Blog tables: centered with visible edging */
+.blog-content table {
+  border-collapse: collapse;
+  margin: 1.5rem auto;
+  width: auto;
+  max-width: 100%;
+  border: 1px solid var(--secondary-color);
+  box-shadow: 0 0 10px rgba(1, 198, 199, 0.15);
+}
+
+.blog-content th,
+.blog-content td {
+  border: 1px solid rgba(1, 198, 199, 0.35);
+  padding: 0.5rem 0.9rem;
+  text-align: center;
+  color: var(--text-color);
+}
+
+.blog-content thead th {
+  background-color: rgba(1, 198, 199, 0.12);
+  color: var(--text-highlight);
+  font-family: var(--font-accent);
 }
 
 /* Prism.js theme customization to match Blade Runner style */

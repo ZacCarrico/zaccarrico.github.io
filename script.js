@@ -372,6 +372,13 @@ function loadBlogPosts() {
   // Example blog post metadata
   const blogPosts = [
     {
+      id: 8,
+      title: "Feedback, Not Frequency",
+      date: "2026-07-09",
+      category: "Tech",
+      filename: "compounding_iterations.md"
+    },
+    {
       id: 7,
       title: "Reducing decision fatigue with Decision Flow",
       date: "2026-05-11",
