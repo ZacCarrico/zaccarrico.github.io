@@ -1,0 +1,25 @@
+# Zac Carrico
+
+> Personal site of Zac Carrico, an AI engineer and scientist in Austin, TX. Writing on machine learning engineering, model training, LLM workflows, and building with AI tools.
+
+The site homepage is a client-rendered single-page app. The pages below are static, fully rendered, and are the canonical readable version of each post.
+
+## Blog posts
+
+- [Feedback, Not Frequency](https://zaccarrico.github.io/blog/feedback-not-frequency.html) (2026-07-09): I heard someone say that iterating 2x faster can lead to 10x better products. Their logic was that the learning from each iteration improves the builders'…
+- [Reducing decision fatigue with Decision Flow](https://zaccarrico.github.io/blog/reducing-decision-fatigue-with-decision-flow.html) (2026-05-11): Built with David C. Ippisch, Sapnil Basnet, and Raj Akula at AI Tinkerers Austin. Theme: generative UI.
+- [A Shared Home Directory for Claude Code](https://zaccarrico.github.io/blog/a-shared-home-directory-for-claude-code.html) (2025-01-24): Claude Code stores user-level configuration in ~/.claude, but there's no built-in way to sync this across machines or share a baseline config with your team.…
+- [Model training regression tests](https://zaccarrico.github.io/blog/model-training-regression-tests.html) (2025-08-29): I've made many changes to model training pipelines that have unexpected negative consequences. Some issues only reveal themselves during longer training jobs…
+- [The Curious Case of the Vanishing GPU Processes](https://zaccarrico.github.io/blog/the-curious-case-of-the-vanishing-gpu-processes.html) (2025-06-03): So, I was happily training my model across GPUs. Everything looked good. The logs were humming. The fans were spinning madly in some far off datacenter. I…
+- [Chatbots and Medical Advice](https://zaccarrico.github.io/blog/chatbots-and-medical-advice.html) (2025-05-21): Chatbots have tremendous potential to help people address their medical questions. A 2023 JAMA Internal Medicine publication already showed that ChatGPT…
+- [Friendly Model Workflows](https://zaccarrico.github.io/blog/friendly-model-workflows.html) (2025-05-01): I frequently encounter model training and inference workflows that can only be run end-to-end. This approach slows down future improvements, complicates…
+- [Resuscitating FastAPI Services](https://zaccarrico.github.io/blog/resuscitating-fastapi-services.html) (2025-04-19): FastAPI is a framework for building APIs with Python. It abstracts many of the lower-level details of running a web service. This makes it easy to start…
+
+## About
+
+- [About Zac Carrico](https://zaccarrico.github.io/#about): Background as an AI engineer and scientist.
+
+## Links
+
+- [GitHub](https://github.com/ZacCarrico)
+- [LinkedIn](https://www.linkedin.com/in/zachary-carrico/)

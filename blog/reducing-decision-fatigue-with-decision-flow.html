@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Reducing decision fatigue with Decision Flow — Zac Carrico</title>
+  <meta name="description" content="Built with David C. Ippisch, Sapnil Basnet, and Raj Akula at AI Tinkerers Austin. Theme: generative UI.">
+  <meta name="author" content="Zac Carrico">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://zaccarrico.github.io/blog/reducing-decision-fatigue-with-decision-flow.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Reducing decision fatigue with Decision Flow">
+  <meta property="og:description" content="Built with David C. Ippisch, Sapnil Basnet, and Raj Akula at AI Tinkerers Austin. Theme: generative UI.">
+  <meta property="og:url" content="https://zaccarrico.github.io/blog/reducing-decision-fatigue-with-decision-flow.html">
+  <meta property="og:site_name" content="Zac Carrico">
+  <meta property="article:published_time" content="2026-05-11">
+  <meta property="article:author" content="Zac Carrico">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Reducing decision fatigue with Decision Flow">
+  <meta name="twitter:description" content="Built with David C. Ippisch, Sapnil Basnet, and Raj Akula at AI Tinkerers Austin. Theme: generative UI.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <!-- Styles: same stack as the main site -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="/style.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+  <style>
+    .markdown-content { font-size: 1.4rem; line-height: 1.7; }
+    .markdown-content h1 { font-size: 1.9rem; }
+    .markdown-content h2 { font-size: 1.6rem; }
+    .markdown-content h3 { font-size: 1.4rem; }
+    .markdown-content h4 { font-size: 1.2rem; }
+    .markdown-content p { margin-bottom: 1.2rem; }
+    .markdown-content ul, .markdown-content ol { margin-left: 2rem; padding-left: 1rem; font-size: 1.3rem; }
+    .markdown-content ul { list-style-type: disc; list-style-position: outside; }
+    .markdown-content ol { list-style-type: decimal; list-style-position: outside; }
+    .markdown-content li { display: list-item; margin-bottom: 0.5rem; }
+    .post-back { display: inline-block; margin-bottom: 1.5rem; font-family: var(--font-accent); letter-spacing: 1px; }
+    .post-wrap { max-width: 900px; margin: 2rem auto; padding: 0 2rem; }
+  </style>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Reducing decision fatigue with Decision Flow",
+  "description": "Built with David C. Ippisch, Sapnil Basnet, and Raj Akula at AI Tinkerers Austin. Theme: generative UI.",
+  "datePublished": "2026-05-11",
+  "dateModified": "2026-05-11",
+  "author": {
+    "@type": "Person",
+    "name": "Zac Carrico",
+    "url": "https://zaccarrico.github.io/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Zac Carrico"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://zaccarrico.github.io/blog/reducing-decision-fatigue-with-decision-flow.html"
+  },
+  "url": "https://zaccarrico.github.io/blog/reducing-decision-fatigue-with-decision-flow.html",
+  "articleSection": "Tech",
+  "inLanguage": "en"
+}
+  </script>
+</head>
+
+<body>
+  <div class="parallax" data-speed="10" id="bg-stars"></div>
+  <div class="parallax" data-speed="20" id="bg-grid"></div>
+
+  <header id="header">
+    <div class="inner">
+      <h1 class="glitch-text" data-text="ZAC CARRICO"><a href="/" style="color:inherit;text-decoration:none;">ZAC CARRICO</a></h1>
+      <ul class="main-menu">
+        <li><a href="/#home">HOME</a></li>
+        <li><a href="/#about">ABOUT</a></li>
+        <li><a href="/#blog">BLOG</a></li>
+        <li><a href="https://github.com/ZacCarrico" target="_blank" rel="noopener">GITHUB</a></li>
+        <li><a href="https://www.linkedin.com/in/zachary-carrico/" target="_blank" rel="noopener">LINKEDIN</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div id="container">
+    <div class="post-wrap">
+      <a class="post-back" href="/#blog">← All posts</a>
+      <article class="blog-post">
+        <div class="blog-header">
+          <h3>Reducing decision fatigue with Decision Flow</h3>
+          <div class="blog-meta">
+            <span class="blog-date">2026-05-11</span>
+            <span class="blog-category">Tech</span>
+          </div>
+        </div>
+        <div class="blog-content markdown-content">
+<p>Built with David C. Ippisch, Sapnil Basnet, and Raj Akula at AI Tinkerers Austin. Theme: generative UI.</p>
+<p>Try using ChatGPT to make a real decision. You type your situation into a paragraph. It comes back with a wall of text, half explanation, the rest a list of clarifying questions. Now you have to type answers to all of them in another paragraph. After two or three rounds you are tired and still do not have an answer. The model did not make the decision harder. The interface did.</p>
+<h2>The idea</h2>
+<p>Decision Flow flips the format. Instead of a wall of questions, you get one question at a time. Instead of typing a wall of answers, you pick from pre-defined options that fit the question: yes or no, a few labeled choices, a map you can choose a drop a pin at, choices from generated images. The cognitive load per step is tiny. You make the decision faster and you have energy left over for the next one.</p>
+<p>The model&#39;s job is not to decide for you. It picks the right question at the right time and structures the answer space so you only have to think about one thing at a time.</p>
+<h2>Algorithm</h2>
+<ol>
+<li>You enter the decision you are trying to make.</li>
+<li>A language model generates five personalized clarifying questions.</li>
+<li>Each question comes with an input shape that matches it: a yes/no card, labeled choices, a map, a sliding scale option, or generated images to choose from.</li>
+<li>You answer them one at a time.</li>
+<li>The model synthesizes your answers into a reasoned verdict.</li>
+</ol>
+<h2>Generative UI generates the right experience for each question</h2>
+<p>Pre-defined options only reduce fatigue if the options match the question. Some of the time a yes/no option is a natural fit for the question, but some of the time the question needs a sliding scale response or even for you to select a design or place on a map. </p>
+<h2>Implementation</h2>
+<p>Single HTML file, vanilla JavaScript, Gemini called twice. Once to generate the questions, once to synthesize the verdict. Each widget runs in an iframe so its state stays isolated and it can talk back to the host via postMessage. We could have reached for a framework, but the hackathon clock made a single file faster to iterate on.</p>
+<h2>What&#39;s next</h2>
+<p>The current version avoids waiting on the model between questions, which would add considerable lag. The next iteration will be to continuously generate new questions in the background based on the current pattern of answer:</p>
+<ul>
+<li>Generate a larger pool of candidate questions up front with the LLM.</li>
+<li>Pick the next-best question from that pool using a decision tree over the answers so far, so each step is local and fast.</li>
+<li>Keep generating new candidate questions in the background while the user is answering the current one.</li>
+</ul>
+<p>The LLM still does the open-ended work of inventing good questions. The decision tree does the cheap work of picking which one to use because it will provide the greatest information gain.</p>
+<h2>Links</h2>
+<ul>
+<li>Code: <a href="https://github.com/ZacCarrico/decide">github.com/ZacCarrico/decide</a></li>
+<li>Demo video: <a href="https://www.youtube.com/watch?v=aLON5mxzJyg">youtube.com/watch?v=aLON5mxzJyg</a></li>
+<li>Hackathon entry: <a href="https://austin.aitinkerers.org/hackathons/h_13f4Kuw0QJs/entries/ht_TP2HgpHp2aI">austin.aitinkerers.org</a></li>
+</ul>
+
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+
+</html>

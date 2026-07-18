@@ -1,0 +1,12 @@
+{
+  "name": "zaccarrico-github-io",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal site. Static, served by GitHub Pages. The build step only pre-renders blog posts into crawlable static pages plus sitemap.xml and llms.txt.",
+  "scripts": {
+    "build": "node tools/generate-blog.mjs"
+  },
+  "devDependencies": {
+    "marked": "^12.0.0"
+  }
+}

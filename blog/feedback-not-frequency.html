@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Feedback, Not Frequency — Zac Carrico</title>
+  <meta name="description" content="I heard someone say that iterating 2x faster can lead to 10x better products. Their logic was that the learning from each iteration improves the builders&#39;…">
+  <meta name="author" content="Zac Carrico">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://zaccarrico.github.io/blog/feedback-not-frequency.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Feedback, Not Frequency">
+  <meta property="og:description" content="I heard someone say that iterating 2x faster can lead to 10x better products. Their logic was that the learning from each iteration improves the builders&#39;…">
+  <meta property="og:url" content="https://zaccarrico.github.io/blog/feedback-not-frequency.html">
+  <meta property="og:site_name" content="Zac Carrico">
+  <meta property="article:published_time" content="2026-07-09">
+  <meta property="article:author" content="Zac Carrico">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Feedback, Not Frequency">
+  <meta name="twitter:description" content="I heard someone say that iterating 2x faster can lead to 10x better products. Their logic was that the learning from each iteration improves the builders&#39;…">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <!-- Styles: same stack as the main site -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="/style.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+  <style>
+    .markdown-content { font-size: 1.4rem; line-height: 1.7; }
+    .markdown-content h1 { font-size: 1.9rem; }
+    .markdown-content h2 { font-size: 1.6rem; }
+    .markdown-content h3 { font-size: 1.4rem; }
+    .markdown-content h4 { font-size: 1.2rem; }
+    .markdown-content p { margin-bottom: 1.2rem; }
+    .markdown-content ul, .markdown-content ol { margin-left: 2rem; padding-left: 1rem; font-size: 1.3rem; }
+    .markdown-content ul { list-style-type: disc; list-style-position: outside; }
+    .markdown-content ol { list-style-type: decimal; list-style-position: outside; }
+    .markdown-content li { display: list-item; margin-bottom: 0.5rem; }
+    .post-back { display: inline-block; margin-bottom: 1.5rem; font-family: var(--font-accent); letter-spacing: 1px; }
+    .post-wrap { max-width: 900px; margin: 2rem auto; padding: 0 2rem; }
+  </style>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Feedback, Not Frequency",
+  "description": "I heard someone say that iterating 2x faster can lead to 10x better products. Their logic was that the learning from each iteration improves the builders'…",
+  "datePublished": "2026-07-09",
+  "dateModified": "2026-07-09",
+  "author": {
+    "@type": "Person",
+    "name": "Zac Carrico",
+    "url": "https://zaccarrico.github.io/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Zac Carrico"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://zaccarrico.github.io/blog/feedback-not-frequency.html"
+  },
+  "url": "https://zaccarrico.github.io/blog/feedback-not-frequency.html",
+  "articleSection": "Tech",
+  "inLanguage": "en"
+}
+  </script>
+</head>
+
+<body>
+  <div class="parallax" data-speed="10" id="bg-stars"></div>
+  <div class="parallax" data-speed="20" id="bg-grid"></div>
+
+  <header id="header">
+    <div class="inner">
+      <h1 class="glitch-text" data-text="ZAC CARRICO"><a href="/" style="color:inherit;text-decoration:none;">ZAC CARRICO</a></h1>
+      <ul class="main-menu">
+        <li><a href="/#home">HOME</a></li>
+        <li><a href="/#about">ABOUT</a></li>
+        <li><a href="/#blog">BLOG</a></li>
+        <li><a href="https://github.com/ZacCarrico" target="_blank" rel="noopener">GITHUB</a></li>
+        <li><a href="https://www.linkedin.com/in/zachary-carrico/" target="_blank" rel="noopener">LINKEDIN</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div id="container">
+    <div class="post-wrap">
+      <a class="post-back" href="/#blog">← All posts</a>
+      <article class="blog-post">
+        <div class="blog-header">
+          <h3>Feedback, Not Frequency</h3>
+          <div class="blog-meta">
+            <span class="blog-date">2026-07-09</span>
+            <span class="blog-category">Tech</span>
+          </div>
+        </div>
+        <div class="blog-content markdown-content">
+<p>I heard someone say that iterating 2x faster can lead to 10x better products. Their logic was that the learning from each iteration improves the builders&#39; understanding, which leads to better decisions for future iterations. In other words, the knowledge compounding produces exponential improvements. There&#39;s some truth in this, but exponential improvement is largely overstated. This blog explains why.</p>
+<h2>When short iteration cycles help</h2>
+<p>Let&#39;s assume that the total number of changes you make in a month is the same whether the iteration cycle is 1 week or 2 weeks. A 1 week iteration cycle leads to better outcomes when you can incorporate learning into the design of changes for the next iteration. If there is no learning, there&#39;s no knowledge gained, and thus no benefit to shorter iteration cycles.</p>
+<h2>The rate divides when you iterate faster</h2>
+<p>Here is the textbook compounding formula:</p>
+<pre><code>final = principal · (1 + rate)^(number of iterations)
+</code></pre>
+<p>A rate is per unit of time. A change worth 10% over a year is worth about 5% over half a year, not another 10. So iterate twice as often and each iteration carries half the rate. The rate divides by the number of iterations.</p>
+<p>Split the period into <var>n</var> iterations and each earns <var>R</var>/<var>n</var>:</p>
+<pre><code>outcome = (1 + R/n)^n
+R:  rate over the whole period
+n:  number of iterations
+</code></pre>
+<p>At <var>R</var> = 0.1, one iteration gives 1.10. Two, at 5% each, give 1.1025. Push <var>n</var> to infinity and it converges to e^0.1 = 1.105. That is the entire range. Going from yearly to infinitely gave you only a 0.5% increase in the outcome.</p>
+<p><img src="blog/plots/plot6_conservation.svg" alt="Once the rate is divided by the number of iterations, iterating once a year lands almost exactly where infinite iterations do, both near e to the R"></p>
+<p>It&#39;s unrealistic to keep the rate the same as you increase iterations -- doing the same amount of work in half the time would mean you&#39;re working twice as fast or twice as long. I&#39;m assuming you&#39;re already working at your capacity so this blog is about working smarter.</p>
+<p>More iterations slice the same pie thinner. Real gains come from a bigger pie, and that comes from learning. Unlike R, C doesn&#39;t divide when you iterate faster. Each iteration produces a new learning signal you didn&#39;t have before — shipping twice as often accumulates twice as many C&#39;s in the same period. That&#39;s the real case for shorter cycles: not compounding, but more opportunities to learn. You can continue to get linear improvements by increasing iteration rate until that iteration time is shorter than the time necessary to learn something from it.</p>
+<h2>Two ways to grow the pie</h2>
+<p>There are two ways to make a bigger pie. Only one compounds, and it does not run on the iteration clock.</p>
+<p>The first is learning. Fast learning is the real reason to shorten iterations. Incorporating what you learn into the product adds a chunk of value per iteration.</p>
+<p>The second is a compounding loop: value that begets value. A product with a network effect or which feeds data into the product to improve it has a compounding loop.Let&#39;s use Google Maps as an example. Phones navigating with it feed data back to the mothership, which improves the predictions about traffic and arrival times.</p>
+<p>Importantly, learning and the compounding loop run on different clocks. Learning runs on the iteration clock and the compounding loop runs on the usage clock. An easy way to tell the difference is if you need to deploy a change to get a result, it&#39;s on the iteration clock, but if the data/users would accumulate without the change then it&#39;s on the usage clock. The 10x improvement from 2x iteration speed gives credit to learning which is likely mostly from compounding.</p>
+<p>Let&#39;s write both pie growers in one line:</p>
+<pre><code>For a single iteration:
+Q_next = (1 + r)·Q + C
+Q:  current product value
+r:  compounding-loop rate, the fraction of value that value generates on its own
+C:  value learning adds each iteration (additive)
+</code></pre>
+<p>Set <var>r</var> to zero, which is most products in their early stage, and it collapses to <var>C</var>·<var>n</var> (i.e. linear, not exponetial). Only a real compounding loop, where <var>r</var> &gt; 0, results in exponential growth. After <var>n</var> iterations:</p>
+<pre><code>For n iterations:
+Q_final     = (C / r)·[ (1 + r)^n - 1 ]
+learning    = C·n               additive, linear
+compounding = Q_final - C·n     grows as (1 + r)^n
+</code></pre>
+<p>It is compound interest with a recurring deposit: <var>C</var> is the deposit learning makes each cycle, <var>r</var> is the loop earning a return on the balance.</p>
+<p><img src="blog/plots/plot1_deposits.svg" alt="Learning is linear; only the loop compounds"></p>
+<h2>Value has a ceiling</h2>
+<p>There&#39;s a maximum value that a product provides, but compounding grows into infinity. To address this, let&#39;s introduce the ceiling <var>Qmax</var>.</p>
+<pre><code>Q_next = Q + r·Q·(1 - Q/Qmax) + C
+Q:     current value
+Qmax:  ceiling, the best the product can be for a typical user
+r:     compounding-loop rate
+C:     value learning adds each iteration
+</code></pre>
+<p><img src="blog/plots/plot2_ceiling.svg" alt="Product value saturating into a single S-curve"></p>
+<p>In this curve, learning drives improvements in early and late iterations, while the middle is driven by compounding.</p>
+<p>Real curves are not clean logistics. Expanding the scope of the product will increase Qmax.</p>
+<h2>Conclusion</h2>
+<p>Iterating faster does not lead to compound growth. Iterating infinitely quickly barely increases the outcome. The story that iterating 2x faster results in 10x value assumes the compounding rate <var>R</var> is not divided by the number of iterations, which isn&#39;t realistic. Iteration speed is important, but more important is features that produce compound growth (e.g. data feedback, network effects, etc.) and good experiments.</p>
+
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+
+</html>

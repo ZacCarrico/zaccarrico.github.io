@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Resuscitating FastAPI Services — Zac Carrico</title>
+  <meta name="description" content="FastAPI is a framework for building APIs with Python. It abstracts many of the lower-level details of running a web service. This makes it easy to start…">
+  <meta name="author" content="Zac Carrico">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://zaccarrico.github.io/blog/resuscitating-fastapi-services.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Resuscitating FastAPI Services">
+  <meta property="og:description" content="FastAPI is a framework for building APIs with Python. It abstracts many of the lower-level details of running a web service. This makes it easy to start…">
+  <meta property="og:url" content="https://zaccarrico.github.io/blog/resuscitating-fastapi-services.html">
+  <meta property="og:site_name" content="Zac Carrico">
+  <meta property="article:published_time" content="2025-04-19">
+  <meta property="article:author" content="Zac Carrico">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Resuscitating FastAPI Services">
+  <meta name="twitter:description" content="FastAPI is a framework for building APIs with Python. It abstracts many of the lower-level details of running a web service. This makes it easy to start…">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <!-- Styles: same stack as the main site -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="/style.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+  <style>
+    .markdown-content { font-size: 1.4rem; line-height: 1.7; }
+    .markdown-content h1 { font-size: 1.9rem; }
+    .markdown-content h2 { font-size: 1.6rem; }
+    .markdown-content h3 { font-size: 1.4rem; }
+    .markdown-content h4 { font-size: 1.2rem; }
+    .markdown-content p { margin-bottom: 1.2rem; }
+    .markdown-content ul, .markdown-content ol { margin-left: 2rem; padding-left: 1rem; font-size: 1.3rem; }
+    .markdown-content ul { list-style-type: disc; list-style-position: outside; }
+    .markdown-content ol { list-style-type: decimal; list-style-position: outside; }
+    .markdown-content li { display: list-item; margin-bottom: 0.5rem; }
+    .post-back { display: inline-block; margin-bottom: 1.5rem; font-family: var(--font-accent); letter-spacing: 1px; }
+    .post-wrap { max-width: 900px; margin: 2rem auto; padding: 0 2rem; }
+  </style>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Resuscitating FastAPI Services",
+  "description": "FastAPI is a framework for building APIs with Python. It abstracts many of the lower-level details of running a web service. This makes it easy to start…",
+  "datePublished": "2025-04-19",
+  "dateModified": "2025-04-19",
+  "author": {
+    "@type": "Person",
+    "name": "Zac Carrico",
+    "url": "https://zaccarrico.github.io/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Zac Carrico"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://zaccarrico.github.io/blog/resuscitating-fastapi-services.html"
+  },
+  "url": "https://zaccarrico.github.io/blog/resuscitating-fastapi-services.html",
+  "articleSection": "Tech",
+  "inLanguage": "en"
+}
+  </script>
+</head>
+
+<body>
+  <div class="parallax" data-speed="10" id="bg-stars"></div>
+  <div class="parallax" data-speed="20" id="bg-grid"></div>
+
+  <header id="header">
+    <div class="inner">
+      <h1 class="glitch-text" data-text="ZAC CARRICO"><a href="/" style="color:inherit;text-decoration:none;">ZAC CARRICO</a></h1>
+      <ul class="main-menu">
+        <li><a href="/#home">HOME</a></li>
+        <li><a href="/#about">ABOUT</a></li>
+        <li><a href="/#blog">BLOG</a></li>
+        <li><a href="https://github.com/ZacCarrico" target="_blank" rel="noopener">GITHUB</a></li>
+        <li><a href="https://www.linkedin.com/in/zachary-carrico/" target="_blank" rel="noopener">LINKEDIN</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div id="container">
+    <div class="post-wrap">
+      <a class="post-back" href="/#blog">← All posts</a>
+      <article class="blog-post">
+        <div class="blog-header">
+          <h3>Resuscitating FastAPI Services</h3>
+          <div class="blog-meta">
+            <span class="blog-date">2025-04-19</span>
+            <span class="blog-category">Tech</span>
+          </div>
+        </div>
+        <div class="blog-content markdown-content">
+<p>FastAPI is a framework for building APIs with Python. It abstracts many of the lower-level details of running a web service. This makes it easy to start using FastAPI, but it can be tricky to diagnose problems when things don&#39;t work because you don&#39;t start with an understanding of what it&#39;s doing under the hood. This bit me in the butt recently, and because I believe a lot of people using FastAPI and Starlette will be making the same mistake, I decided to desribe its solution.</p>
+<h3>The problem</h3>
+<p> A FastAPI service for a model deployment was being killed infrequently. The logs showed that it was being killed by Kubernetes due to a failing liveness probe. The liveness probe is a proxy that Kubernetes uses to determine if a service is still responding to requests. If the probe fails (<strong>i.e.</strong>, the service is not responding), Kubernetes will restart the container. </p>
+<h3>The code</h3>
+<p>There are three endpoints that are relevant to this problem:
+<code>/predict</code>
+<code>/livez</code><sup><a href="#fn1">1</a></sup>
+<code>/readyz</code><sup><a href="#fn1">1</a></sup></p>
+<pre><code class="language-Python"># only showing code that is relevant to the problem
+from fastapi import FastAPI, Response, Request
+from http import HTTPStatus
+
+
+app = FastAPI()
+
+@app.post(&quot;/predict&quot;)
+async def predict(request: Request):
+    return predict_handler(request)
+
+
+@app.get(&quot;/livez&quot;)
+def livez():
+    # check if the service is still predicting based on the last prediction time
+    if not is_predicting():
+        raise Response(
+                status_code=HTTPStatus.INTERNAL_SERVER_ERROR,
+                content=&quot;Service has stopped completing predictions&quot;,
+            )
+    return Response(status_code=HTTPStatus.OK, content=&quot;OK&quot;)
+
+
+@app.get(&quot;/readyz&quot;)
+async def readyz():
+    try:
+        make_prediction()
+    except Exception as e:
+        return Response(
+                status_code=HTTPStatus.INTERNAL_SERVER_ERROR,
+                content=f&quot;Model inference failed: {str(e)}&quot;,
+            )
+</code></pre>
+<h3>The clues</h3>
+<ol>
+<li>The pod was killed more frequently when requests spiked. </li>
+<li>Predict requests are relatively slow. Around a second, which is acceptable for the application.</li>
+</ol>
+<h3>Understanding the system</h3>
+<p>To solve this problem, we need to understand how FastAPI is handling the requests. FastAPI uses Starlette under the hood, which is a lower-level library for building web applications. Starlette uses asyncio to handle requests. If you&#39;re not familiar with asyncio, it&#39;s a library that allows you to run code concurrently. Functions defined with <code>async def</code> return coroutine objects when called. The coroutine objects are run by the &quot;event looop&quot; (which is a fancy name for a loop that waits for events). </p>
+<p>In our service the <code>predict</code> and <code>readyz</code> endpoints are using <code>async def</code> and the <code>livez</code> endpoint is using <code>def</code>. For async functions, Starlette runs them with the event loop. For non-async functions, Starlette runs them in the thread pool. We have two non-async functions (<code>predict_handler</code> and <code>livez</code>), and by default, Starlette will run them in the <strong>same</strong> thread pool. This means that they share the same task queue and this what led to the problem. </p>
+<h3>Root cause</h3>
+<p>The <code>predict</code> endpoint is being called many times per second, and it calls <code>predict_handler</code> which is slow. Each of those <code>predict_handler</code> calls adds a task to the thread pool. The <code>livez</code> endpoint is being called infrequently (every 10 seconds) and has a timeout of 5 seconds. It&#39;s added to the same thread pool queue as the <code>predict_handler</code>. As a result, the <code>livez</code> task is waiting on the <code>predict_handler</code> tasks to finish. This waiting period will frequently exceed the timeout of 5 seconds, and even with retries, the <code>livez</code> endpoint will return a failure status code.</p>
+<h3>The Solution</h3>
+<p>The solution is to run the <code>predict_handler</code> and <code>livez</code> tasks in different thread pools. This way, the <code>livez</code> task is not waiting on the <code>predict_handler</code> tasks to finish. This can be accomplished by using </p>
+<pre><code class="language-Python">predict_executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix=&quot;predict_handler&quot;)
+
+@app.post(&quot;/predict&quot;)
+async def predict(request: Request):
+    loop = asyncio.get_event_loop()
+    return await loop.run_in_executor(predict_executor, predict_handler, request)
+</code></pre>
+<p>Now the <code>predict_handler</code> is running in the &quot;predict_handler&quot; thread pool and <code>livez</code> is running in the default thread pool. This means that the <code>livez</code> tasks are added to a separate queue than the <code>predict_handler</code> tasks. As a result <code>livez</code> tasks don&#39;t need to wait for <code>predict_handler</code> tasks to finish before they can run.</p>
+<p><a id="fn1"></a><sup>1</sup> The <code>z</code> at the end is a convention because it helps avoid naming conflicts in case you wanted to use a public endpoint called /live or /ready.</p>
+
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+
+</html>
