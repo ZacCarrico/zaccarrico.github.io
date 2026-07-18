@@ -82,6 +82,10 @@ Getting Google to index the new pages needs a step Claude cannot do: submitting
 Console account. Remind Zac to do it rather than attempting it; the old anonymous
 sitemap ping endpoints are deprecated.
 
+The repo root holds a Google Search Console verification file
+(`google<hash>.html`). It must stay committed and served at the site root; do not
+delete it or Google loses ownership verification for the property.
+
 ## Git
 
 Follow the global staging rule: stage each intended file by explicit path, never
