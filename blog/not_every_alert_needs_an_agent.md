@@ -2,18 +2,21 @@ I gave a talk called "Not every alert needs an agent" at MLOps & GenAI World on 
 
 ## Engineers were already triaging with agents
 
-When an alert fired, the on-call engineer opened Claude Code on their laptop and asked it to investigate (we have an "investigator" agent skill). Often, other people would do the same, generating multiple local copies of a similar report. 
+When an alert fired, the on-call engineer opened Claude Code on their laptop and asked it to investigate (we have an "investigator" agent skill). Often, other people would do the same, generating multiple local copies of a similar report.
 
 ## First minimize noisy alerts
 
-Before you add automatation like an agent, first reduce the noise. The agent writes a report to describe the root cause of alerts and if the alerts are due to noise you have noise + lots of descriptions of the noise. This isn't helpful. First spend the time decreasing the noise of the alerts by taking these steps:
+Before you add automation like an agent, first reduce the noise. The agent writes a report to describe the root cause of alerts and if the alerts are due to noise you have noise + lots of descriptions of the noise. This isn't helpful. First spend the time decreasing the noise of the alerts by taking these steps:
 
-1. **Set alert trigger that match the traffic**
-A trigger set when traffic was low fires every day once traffic grows. A trigger set at peak traffic misses problems at night. Set it from the alert's recent history and revisit it when traffic changes. If an alert fires often, but does not need to be responded to, the trigger to too sensitive.
+1. **Set alert triggers that match the traffic**
+
+   A trigger set when traffic was low fires every day once traffic grows. A trigger set at peak traffic misses problems at night. Set it from the alert's recent history and revisit it when traffic changes. If an alert fires often, but does not need to be responded to, the trigger is too sensitive.
 2. **Use anomaly detection**
-Many metrics follow a daily and weekly cycle, so one fixed threshold is wrong for part of the day. Anomaly detection learns the normal range for each hour and day and fires only when the metric leaves that range.
+
+   Many metrics follow a daily and weekly cycle, so one fixed threshold is wrong for part of the day. Anomaly detection learns the normal range for each hour and day and fires only when the metric leaves that range.
 3. **Combine an alerting rule's sub-alerts into one alert**
-Say a rule checks API latency, with one sub-alert per endpoint. When the database slows down, every endpoint alerts at once, and each alert gets its own triage report about the same slow database. Alert on the total, or send the group as one notification, so one cause sends one alert.
+
+   Say a rule checks API latency, with one sub-alert per endpoint. When the database slows down, every endpoint alerts at once, and each alert gets its own triage report about the same slow database. Alert on the total, or send the group as one notification, so one cause sends one alert.
 
 ## A shared triage agent posts one report
 
