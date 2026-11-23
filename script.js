@@ -372,6 +372,13 @@ function loadBlogPosts() {
   // Example blog post metadata
   const blogPosts = [
     {
+      id: 9,
+      title: "Not every alert needs an agent",
+      date: "2026-11-23",
+      category: "Tech",
+      filename: "not_every_alert_needs_an_agent.md"
+    },
+    {
       id: 8,
       title: "Feedback, Not Frequency",
       date: "2026-07-09",
